@@ -1,0 +1,17 @@
+= ryantaussig's dotfiles
+Ryan Taussig
+2016-01-19
+
+== copyright notice
+
+copyright (c) 2015 Ryan Taussig  
+
+The configuration files contained within this git repository are provided free of charge. You may redistribute or modify them according to the terms of the GNU General Public License version 3 or any later version.
+
+These files are distributed in the hope that they will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+The text of the GNU General Public License version 3 is provided in this repository under the filename "LICENSE." If this file is missing, see <http://www.gnu.org/licenses/>.
+
+== abstract
+
+In this repository, you'll find an assortment of my personal dotfiles and bash scripts. A modified version of michaeljsmalley's symlink creating script is also included.
