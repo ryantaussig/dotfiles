@@ -141,3 +141,9 @@ update-and-upgrade() {
     sudo apt-get upgrade
 }
 alias uu=update-and-upgrade
+
+dict-gcide-and-wordnet() {
+    dict -d gcide $1
+    dict -d wn $1
+}
+alias dicten=dict-gcide-and-wordnet
