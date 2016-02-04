@@ -79,6 +79,9 @@ set hlsearch
 " end highlighting with backslash space
 nnoremap <leader><space> :nohlsearch<CR>
 
+" set maximum number of open tabs
+set tabpagemax=15
+
 """"""""
 " 3. colors and fonts
 """"""""
@@ -117,6 +120,9 @@ autocmd bufread,bufnewfile *.adoc set filetype=asciidoc
 
 " enable auto indentation
 autocmd filetype asciidoc set autoindent
+
+" enable spell check
+autocmd filetype asciidoc set spell
 
 """"""""
 " 6. python-specific
