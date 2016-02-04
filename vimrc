@@ -1,18 +1,19 @@
 """"""""
 " author: ryantaussig
-" last update: 2016-01-19
+" last update: 2016-02-03
 " license: GPLv3.0 or any later version
 "
 " contents:
-"   1. general and interface settings
-"   2. colors and fonts
-"   3. tabs
-"   4. asciidoc-specific
-"   5. python-specific
+"   1. general settings
+"   2. user interface settings
+"   3. colors and fonts
+"   4. tabs
+"   5. asciidoc-specific
+"   6. python-specific
 """"""""
 
 """"""""
-" 1. general and interface settings
+" 1. general settings
 """"""""
 
 " turn off vi compatibility
@@ -27,6 +28,22 @@ set autoread
 " set command line history
 set history=1000
 
+" enable filetype plugins
+filetype plugin indent on
+
+" set initial gui window size
+if has("gui_running")
+    set lines=24 columns=84
+endif
+
+" no visual or audible bell
+set noerrorbells visualbell t_vb=
+autocmd GUIEnter * set visualbell t_vb=
+
+""""""""
+" 2. user interface settings
+""""""""
+
 " set command line height
 set cmdheight=2
 
@@ -36,20 +53,8 @@ set showcmd
 " show mode
 set showmode
 
-" enable filetype plugins
-filetype plugin indent on
-
-" set initial gui window size
-if has("gui_running")
-    set lines=24 columns=84
-endif
-
 " visual autocomplete
 set wildmenu
-
-" no visual or audible bell
-set noerrorbells visualbell t_vb=
-autocmd GUIEnter * set visualbell t_vb=
 
 " show line numbers
 set number
@@ -75,7 +80,7 @@ set hlsearch
 nnoremap <leader><space> :nohlsearch<CR>
 
 """"""""
-" 2. colors and fonts
+" 3. colors and fonts
 """"""""
 
 " enable syntax highlighting
@@ -91,7 +96,7 @@ endif
 "set guifont=DejaVu\ Sans\ Mono:h10
 
 """"""""
-" 3. tabs
+" 4. tabs
 """"""""
 
 " replace tabs with spaces
@@ -104,14 +109,17 @@ set tabstop=4 softtabstop=4
 set shiftwidth=4 
 
 """"""""
-" 4. asciidoc-specific
+" 5. asciidoc-specific
 """"""""
 
 " set filetype association
 autocmd bufread,bufnewfile *.adoc set filetype=asciidoc
 
+" enable auto indentation
+autocmd filetype asciidoc set autoindent
+
 """"""""
-" 5. python-specific
+" 6. python-specific
 """"""""
 
 " use all python highlighting
