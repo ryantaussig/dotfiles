@@ -128,12 +128,12 @@ fi
 
 # Convert a .adoc file to .pdf
 # syntax is `adoc2pdf [filename]` where filename is the file without its extension
-asciidoctor-and-dblatex() {
-    asciidoctor -b docbook $1.adoc
-    dblatex $1.xml
-    rm $1.xml
+asciidoctor-and-wkhtmltopdf() {
+    asciidoctor $1.adoc
+    wkhtmltopdf $1.html $1.pdf
+    rm $1.html
 }
-alias adoc2pdf=asciidoctor-and-dblatex
+alias adoc2pdf=asciidoctor-and-wkhtmltopdf
 
 # Quick update and upgrade
 update-and-upgrade() {
