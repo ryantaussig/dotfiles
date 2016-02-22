@@ -130,7 +130,7 @@ fi
 # syntax is `adoc2pdf [filename]` where filename is the file without its extension
 asciidoctor-and-wkhtmltopdf() {
     asciidoctor $1.adoc
-    wkhtmltopdf $1.html $1.pdf
+    wkhtmltopdf -s Letter $1.html $1.pdf
     rm $1.html
 }
 alias adoc2pdf=asciidoctor-and-wkhtmltopdf
