@@ -2,8 +2,8 @@
 
 ########
 # author: ryantaussig
-# last update: 2016-01-19
-# license: GPLv3.0 or any later version
+# last update: 2016-03-15
+# license: GPLv2.0
 #
 # abstract:
 #   the following scipt installs the scipy stack for python 2 and 3, including documentation.

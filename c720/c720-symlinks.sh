@@ -2,8 +2,8 @@
 
 ########
 # author: ryantaussig
-# last updated: 2016-02-24
-# license: GPLv3.0 or any later version
+# last updated: 2016-03-15
+# license: GPLv2.0
 #
 # abstract: makes symbolic links for c720-specific settings
 ########

@@ -3,8 +3,8 @@
 ########
 # author: michaeljsmalley
 # modified by: ryantaussig
-# last updated: 2016-01-19
-# license: GPLv3.0 or any later version
+# last updated: 2016-03-15
+# license: GPLv2.0
 #
 # abstract:
 #   This script creates symlinks from the home directory to any desired dotfiles in ~/dotfiles
@@ -14,7 +14,7 @@
 
 dir=~/dotfiles                    # dotfiles directory
 olddir=~/dotfiles_old             # old dotfiles backup directory
-files="bashrc vimrc vim"    # list of files/folders to symlink in homedir
+files="bashrc vimrc vim jackdrc"    # list of files/folders to symlink in homedir
 
 ##########
 

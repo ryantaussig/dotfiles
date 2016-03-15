@@ -1,7 +1,7 @@
 """"""""
 " author: ryantaussig
-" last update: 2016-02-03
-" license: GPLv3.0 or any later version
+" last update: 2016-03-15
+" license: GPLv2.0
 "
 " contents:
 "   1. general settings
