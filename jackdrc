@@ -1,0 +1,7 @@
+########
+# author: ryantaussig
+# last update: 2016-03-15
+# license: GPLv2.0
+########
+
+/usr/bin/jackd -d alsa --device hw:0 --rate 44100 --period 128
