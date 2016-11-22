@@ -17,6 +17,10 @@ sudo apt-get install vim-gnome vim-doc
 
 sudo apt-get install git git-doc
 
+# install asciidoctor
+
+sudo apt-get install asciidoctor asciidoctor-doc
+
 # install libreoffice metapackage
 
 sudo apt-get install libreoffice
