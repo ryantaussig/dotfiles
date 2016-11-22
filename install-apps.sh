@@ -2,20 +2,20 @@
 
 ########
 # author: ryantaussig
-# last update: 2016-03-15
+# last update: 2016-11-22
 # license: GPLv2.0
 #
 # abstract:
-#   the following scipt installs basic applications including documentation.
+#   the following script installs basic applications and corresponding documentation.
 ########
 
 # install gvim
 
-sudo apt-get install vim-gnome
+sudo apt-get install vim-gnome vim-doc
 
 # install git (should already be installed if this script was obtained from github)
 
-sudo apt-get install git
+sudo apt-get install git git-doc
 
 # install libreoffice metapackage
 
