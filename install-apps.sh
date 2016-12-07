@@ -43,7 +43,7 @@ sudo apt-get install python-numpy-doc python-scipy-doc python-matplotlib-doc ipy
 
 # install supplements to scipy stack
 
-sudo apt-get install python-pyfftw python3-fftw cython cython3 cython-doc
+sudo apt-get install python-pyfftw python3-pyfftw cython cython3 cython-doc
 
 # install freecad and documentation
 
