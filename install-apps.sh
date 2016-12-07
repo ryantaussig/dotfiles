@@ -25,7 +25,7 @@ sudo apt-get install asciidoctor asciidoctor-doc
 
 sudo apt-get install libreoffice
 
-# install octave and its extended packages
+# install octave, its extended packages, and documentation
 
 sudo apt-get install octave-*
 
@@ -40,3 +40,7 @@ sudo apt-get install python3-numpy python3-scipy python3-matplotlib ipython3 ipy
 # install available documentation for scipy stack (no doc in repo for pandas)
 
 sudo apt-get install python-numpy-doc python-scipy-doc python-matplotlib-doc ipython-doc python-sympy-doc python-nose2-doc
+
+# install freecad and documentation
+
+sudo apt-get install freecad freecad-doc freecad-dev
