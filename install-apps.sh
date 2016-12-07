@@ -33,13 +33,17 @@ sudo apt-get install octave-*
 
 sudo apt-get install python-numpy python-scipy python-matplotlib ipython ipython-notebook python-pandas python-sympy python-nose2
 
-# install scipy for python 3
+# install scipy stack for python 3
 
 sudo apt-get install python3-numpy python3-scipy python3-matplotlib ipython3 ipython3-notebook python3-pandas python3-sympy python3-nose2
 
-# install available documentation for scipy stack (no doc in repo for pandas)
+# install available documentation for scipy stack
 
-sudo apt-get install python-numpy-doc python-scipy-doc python-matplotlib-doc ipython-doc python-sympy-doc python-nose2-doc
+sudo apt-get install python-numpy-doc python-scipy-doc python-matplotlib-doc ipython-doc python-pandas-doc python-sympy-doc python-nose2-doc
+
+# install supplements to scipy stack
+
+sudo apt-get install python-pyfftw python3-fftw cython cython3 cython-doc
 
 # install freecad and documentation
 
