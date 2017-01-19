@@ -1,6 +1,6 @@
 """"""""
 " author: ryantaussig
-" last update: 2016-03-15
+" last update: 2017-01-18
 " license: GPLv2.0
 "
 " contents:
@@ -122,7 +122,7 @@ autocmd bufread,bufnewfile *.adoc set filetype=asciidoc
 autocmd filetype asciidoc set autoindent
 
 " enable spell check
-autocmd filetype asciidoc set spell
+"autocmd filetype asciidoc set spell
 
 """"""""
 " 6. python-specific
