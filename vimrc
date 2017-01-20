@@ -80,7 +80,7 @@ set hlsearch
 nnoremap <leader><space> :nohlsearch<CR>
 
 " set maximum number of open tabs
-set tabpagemax=15
+set tabpagemax=16
 
 """"""""
 " 3. colors and fonts
@@ -122,7 +122,7 @@ autocmd bufread,bufnewfile *.adoc set filetype=asciidoc
 autocmd filetype asciidoc set autoindent
 
 " enable spell check
-"autocmd filetype asciidoc set spell
+autocmd filetype asciidoc set spell
 
 """"""""
 " 6. python-specific
