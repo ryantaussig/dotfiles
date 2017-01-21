@@ -59,4 +59,4 @@ sudo apt-get install youtube-dl
 
 # install dictionary, thesaurus, and gazetteer
 
-sudo apt-get install dict-*
+sudo apt-get install dict dict-*
