@@ -2,7 +2,7 @@
 
 ########
 # author: ryantaussig
-# last update: 2016-12-07
+# last update: 2017-01-21
 # license: GPLv2.0
 #
 # abstract:
@@ -27,7 +27,7 @@ sudo apt-get install libreoffice
 
 # install octave, its extended packages, and documentation
 
-sudo apt-get install octave-*
+sudo apt-get install octave*
 
 # install scipy stack for python 2
 
@@ -48,3 +48,15 @@ sudo apt-get install python-pyfftw python3-pyfftw cython cython3 cython-doc
 # install freecad and documentation
 
 sudo apt-get install freecad freecad-doc freecad-dev
+
+# install amateur radio applications
+
+sudo apt-get install chirp hamradio* ax25* gnuradio*
+
+# install youtube-dl
+
+sudo apt-get install youtube-dl
+
+# install dictionary, thesaurus, and gazetteer
+
+sudo apt-get install dict-*
