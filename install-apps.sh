@@ -2,7 +2,7 @@
 
 ########
 # author: ryantaussig
-# last update: 2017-01-21
+# last update: 2017-01-25
 # license: GPLv2.0
 #
 # abstract:
@@ -16,6 +16,10 @@ sudo apt-get install vim-gnome vim-doc
 # install git (should already be installed if this script was obtained from github)
 
 sudo apt-get install git git-doc
+
+# install ssh metapackage
+
+sudo apt-get install ssh
 
 # install asciidoctor
 
