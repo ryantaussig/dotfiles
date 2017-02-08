@@ -5,7 +5,7 @@
 !!!!!!!!
 
 ! set default window size
-xterm*vt100.geometry: 80x24
+xterm*vt100.geometry: 80x32
 
 ! set to utf-8
 xterm*utf8: 1
