@@ -100,8 +100,12 @@ else
     set background=dark
 endif
 
-" set gui font (for Windows only)
-"set guifont=DejaVu\ Sans\ Mono:h10
+" set gui font
+if has('gui_win32')
+    set guifont=DejaVu\ Sans\ Mono:h12
+else
+    set guifont=DejaVu\ Sans\ Mono\ 12
+endif
 
 """"""""
 " 4. tabs
