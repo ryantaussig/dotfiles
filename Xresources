@@ -1,0 +1,33 @@
+!!!!!!!!
+! author: ryantaussig
+! last update: 2017-01-08
+! license: GPLv2.0
+!!!!!!!!
+
+! set default window size
+xterm*vt100.geometry: 80x24
+
+! set to utf-8
+xterm*utf8: 1
+xterm*locale: true
+
+! color settings
+!xterm*termName: xterm-256color
+
+! set font
+xterm*faceName: DejaVu Sans Mono:size=12:antialias=false
+xterm*renderFont: true
+
+! set default to login shell
+xterm*loginshell: true
+
+! set scrollback history
+xterm*savelines: 2048
+
+! set scrolling and scrollbar behavior
+xterm*ScrollBar: true
+xterm*rightScrollBar: true
+xterm*scrollTtyoutput: false
+
+! set clipboard as default for selections
+xterm*selecttoclipboard: true

@@ -1,6 +1,6 @@
 """"""""
 " author: ryantaussig
-" last update: 2017-01-18
+" last update: 2017-02-08
 " license: GPLv2.0
 "
 " contents:
@@ -26,7 +26,7 @@ set lazyredraw
 set autoread
 
 " set command line history
-set history=1000
+set history=2048
 
 " enable filetype plugins
 filetype plugin indent on

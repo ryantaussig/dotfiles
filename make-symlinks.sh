@@ -3,7 +3,7 @@
 ########
 # author: michaeljsmalley
 # modified by: ryantaussig
-# last updated: 2016-03-15
+# last updated: 2017-03-08
 # license: GPLv2.0
 #
 # abstract:
@@ -14,7 +14,7 @@
 
 dir=~/dotfiles                    # dotfiles directory
 olddir=~/dotfiles_old             # old dotfiles backup directory
-files="bashrc vimrc vim ipython"    # list of files/folders to symlink in homedir
+files="bashrc vimrc vim ipython Xresources"    # list of files/folders to symlink in homedir
 
 ##########
 
