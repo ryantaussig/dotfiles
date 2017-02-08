@@ -33,7 +33,7 @@ filetype plugin indent on
 
 " set initial gui window size
 if has("gui_running")
-    set lines=24 columns=84
+    set lines=32 columns=84
 endif
 
 " no visual or audible bell
