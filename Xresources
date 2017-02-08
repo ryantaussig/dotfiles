@@ -12,7 +12,7 @@ xterm*utf8: 1
 xterm*locale: true
 
 ! color settings
-!xterm*termName: xterm-256color
+xterm*termName: xterm-256color
 
 ! set font
 xterm*faceName: DejaVu Sans Mono:size=12:antialias=false
