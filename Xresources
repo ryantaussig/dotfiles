@@ -22,7 +22,7 @@ xterm*renderFont: true
 xterm*loginshell: true
 
 ! set scrollback history
-xterm*savelines: 2048
+xterm*saveLines: 2048
 
 ! set scrolling and scrollbar behavior
 xterm*ScrollBar: true
@@ -30,4 +30,4 @@ xterm*rightScrollBar: true
 xterm*scrollTtyoutput: false
 
 ! set clipboard as default for selections
-xterm*selecttoclipboard: true
+xterm*selectToClipboard: true
