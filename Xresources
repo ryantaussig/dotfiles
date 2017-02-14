@@ -1,7 +1,9 @@
 !!!!!!!!
 ! author: ryantaussig
-! last update: 2017-01-08
+! last update: 2017-01-11
 ! license: GPLv2.0
+! abstract: primarily xterm settings
+!   execute '$ xrdb -merge ~/.Xresources' to apply updates
 !!!!!!!!
 
 ! set default window size
@@ -13,6 +15,9 @@ xterm*locale: true
 
 ! color settings
 xterm*termName: xterm-256color
+xterm*foreground: black
+xterm*background: white
+xterm*cursorColor: red
 
 ! set font
 xterm*faceName: DejaVu Sans Mono:size=12:antialias=false
@@ -27,7 +32,7 @@ xterm*saveLines: 2048
 ! set scrolling and scrollbar behavior
 xterm*ScrollBar: true
 xterm*rightScrollBar: true
-xterm*scrollTtyoutput: false
+xterm*scrollTtyOutput: false
 
 ! set clipboard as default for selections
 xterm*selectToClipboard: true

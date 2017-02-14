@@ -90,14 +90,14 @@ set tabpagemax=16
 syntax enable
 
 " set colorscheme, use degraded 256 version in terminal mode to ensure
-" usability within terminals using non-solarized schemes
+" compatability with terminals using non-solarized schemes
 if has("gui_running")
     colorscheme solarized
-    set background=dark
+    set background=light
 else 
     let g:solarized_termcolors=256
     colorscheme solarized
-    set background=dark
+    set background=light
 endif
 
 " set gui font
