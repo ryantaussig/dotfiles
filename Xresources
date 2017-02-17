@@ -1,6 +1,6 @@
 !!!!!!!!
 ! author: ryantaussig
-! last update: 2017-01-11
+! last update: 2017-02-17
 ! license: GPLv2.0
 ! abstract: primarily xterm settings
 !   execute '$ xrdb -merge ~/.Xresources' to apply updates
@@ -13,11 +13,37 @@ xterm*vt100.geometry: 84x32
 xterm*utf8: 1
 xterm*locale: true
 
-! color settings
+! color settings for gruvbox-light by Pavel Pertzev
+! http://github.com/morhetz/gruvbox
 xterm*termName: xterm-256color
-xterm*foreground: black
-xterm*background: white
-xterm*cursorColor: red
+! hard contrast: *background: #f9f5d7
+xterm*background: #fbf1c7
+! soft contrast: *background: #f2e5bc
+xterm*foreground: #3c3836
+! Black + DarkGrey
+xterm*color0:  #fdf4c1
+xterm*color8:  #928374
+! DarkRed + Red
+xterm*color1:  #cc241d
+xterm*color9:  #9d0006
+! DarkGreen + Green
+xterm*color2:  #98971a
+xterm*color10: #79740e
+! DarkYellow + Yellow
+xterm*color3:  #d79921
+xterm*color11: #b57614
+! DarkBlue + Blue
+xterm*color4:  #458588
+xterm*color12: #076678
+! DarkMagenta + Magenta
+xterm*color5:  #b16286
+xterm*color13: #8f3f71
+! DarkCyan + Cyan
+xterm*color6:  #689d6a
+xterm*color14: #427b58
+! LightGrey + White
+*color7:  #7c6f64
+*color15: #3c3836
 
 ! set font
 xterm*faceName: DejaVu Sans Mono:size=12:antialias=false

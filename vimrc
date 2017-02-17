@@ -1,6 +1,6 @@
 """"""""
 " author: ryantaussig
-" last update: 2017-02-08
+" last update: 2017-02-17
 " license: GPLv2.0
 "
 " contents:
@@ -89,16 +89,27 @@ set tabpagemax=16
 " enable syntax highlighting
 syntax enable
 
-" set colorscheme, use degraded 256 version in terminal mode to ensure
-" compatability with terminals using non-solarized schemes
+" set colorscheme to gruvbox
+" in addition set light or dark variant based on assumed ambient light
 if has("gui_running")
-    colorscheme solarized
-    set background=light
+    colorscheme gruvbox
+    if strftime('%H') >= 6 && strftime ('%H') <= 18
+        set background=light
+    else
+        set background=dark
+    endif
 else 
-    let g:solarized_termcolors=256
-    colorscheme solarized
-    set background=light
+    colorscheme gruvbox
+    if strftime('%H') >= 6 && strftime ('%H') <= 18
+        set background=light
+    else
+        set background=dark
+    endif
 endif
+
+
+" source .vimrc after each save so variant changes automatically
+autocmd bufwritepost * source ~/.vimrc
 
 " set gui font
 if has('gui_win32')

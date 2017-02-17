@@ -1,6 +1,6 @@
 ########
 # author: ryantaussig
-# last modified: 2016-03-15
+# last modified: 2017-02-17
 # license: GPLv2.0
 #
 # This bashrc is adapted from the debian/ubuntu default version.
@@ -147,3 +147,7 @@ dict-gcide-and-wordnet() {
     dict -d wn $1
 }
 alias dicten=dict-gcide-and-wordnet
+
+# Custom 256 color palette for gruvbox
+
+source "$HOME/.vim/colors/gruvbox_256palette.sh"
