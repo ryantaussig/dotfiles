@@ -6,6 +6,7 @@
 " contents:
 "   1. general settings
 "   2. user interface settings
+"   3. custom keybindings
 "   3. colors and fonts
 "   4. tabs
 "   5. asciidoc-specific
@@ -76,14 +77,24 @@ set incsearch
 " highlight serach matches
 set hlsearch
 
-" end highlighting with backslash space
-nnoremap <leader><space> :nohlsearch<CR>
-
 " set maximum number of open tabs
 set tabpagemax=16
 
 """"""""
-" 3. colors and fonts
+" 3. custom keybindings
+""""""""
+
+" set leader to space
+let mapleader="\<space>"
+
+" toggle gruvbox background with space-b
+nnoremap <leader>b :call gruvbox#bg_toggle()<CR>
+
+" toggle search highlighting on an off with space-h
+nnoremap <leader>h :call gruvbox#hls_toggle()<CR>
+
+""""""""
+" 4. colors and fonts
 """"""""
 
 " enable syntax highlighting
@@ -107,7 +118,6 @@ else
     endif
 endif
 
-
 " source .vimrc after each save so variant changes automatically
 autocmd bufwritepost * source ~/.vimrc
 
@@ -119,7 +129,7 @@ else
 endif
 
 """"""""
-" 4. tabs
+" 5. tabs
 """"""""
 
 " replace tabs with spaces
@@ -132,7 +142,7 @@ set tabstop=4 softtabstop=4
 set shiftwidth=4 
 
 """"""""
-" 5. asciidoc-specific
+" 6. asciidoc-specific
 """"""""
 
 " set filetype association
@@ -145,7 +155,7 @@ autocmd filetype asciidoc set autoindent
 autocmd filetype asciidoc set spell
 
 """"""""
-" 6. python-specific
+" 7. python-specific
 """"""""
 
 " use all python highlighting
