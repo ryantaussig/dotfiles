@@ -150,4 +150,12 @@ alias dicten=dict-gcide-and-wordnet
 
 # Custom 256 color palette for gruvbox
 
-source "$HOME/.vim/colors/gruvbox_256palette.sh"
+source "$HOME/dotfiles/gruvbox_256palette.sh"
+
+## Toggle light and dark colorscheme based on time of day
+#TIME=$(date "+%H")
+#if $TIME >= 6 && $TIME <= 18
+#    xrdb -merge ~/.Xresources.light
+#else
+#    xrdb -merge ~/.Xresources.dark
+#fi
