@@ -111,11 +111,7 @@ if has("gui_running")
     endif
 else 
     colorscheme gruvbox
-    if strftime('%H') >= 6 && strftime ('%H') <= 18
-        set background=light
-    else
-        set background=dark
-    endif
+    set background=dark
 endif
 
 " source .vimrc after each save so variant changes automatically
