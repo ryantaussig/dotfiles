@@ -63,10 +63,8 @@ set number
 " enable [], {}, and () pair matching
 set showmatch
 
-" highlight current line in gui
-if has("gui_running")
-    set cursorline
-endif
+" highlight current line
+set cursorline
 
 " ignore case while searching
 set ignorecase
