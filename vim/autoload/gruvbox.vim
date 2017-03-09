@@ -7,6 +7,7 @@
 "
 " Adapted by ryantaussig:
 "   (2017-02-17) - added gruvbox#bg_toggle()
+"   Sublicense: MIT/Expat
 " -----------------------------------------------------------------------------
 
 function! gruvbox#invert_signs_toggle()

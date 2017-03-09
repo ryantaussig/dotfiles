@@ -1,13 +1,13 @@
 !!!!!!!!
 ! author: ryantaussig
-! last update: 2017-02-17
-! license: GPLv2.0
+! last update: 2017-03-08
+! license: MIT/Expat
 ! abstract: primarily xterm settings
 !   execute '$ xrdb -merge ~/.Xresources' to apply updates
 !!!!!!!!
 
 ! set default window size
-xterm*vt100.geometry: 84x32
+xterm*vt100.geometry: 80x25
 
 ! set to utf-8
 xterm*utf8: 1

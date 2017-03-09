@@ -1,7 +1,7 @@
 ########
 # author: ryantaussig
-# last modified: 2017-02-17
-# license: GPLv2.0
+# last modified: 2017-03-08
+# license: MIT/Expat
 #
 # This bashrc is adapted from the debian/ubuntu default version.
 ########

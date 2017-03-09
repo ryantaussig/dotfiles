@@ -4,7 +4,7 @@
 # author: michaeljsmalley
 # modified by: ryantaussig
 # last updated: 2017-03-08
-# license: GPLv2.0
+# license: MIT/Expat
 #
 # abstract:
 #   This script creates symlinks from the home directory to any desired dotfiles in ~/dotfiles

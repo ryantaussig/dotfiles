@@ -1,5 +1,9 @@
 #!/bin/sh
 
+# author: morhetz <morhetz@gmail.com>
+# source: https://github.com/morhetz/gruvbox
+# this comment added for reference by ryantaussig
+
 if [ "${TERM%%-*}" = "screen" ]; then
   if [ -n "$TMUX" ]; then
     printf "\033Ptmux;\033\033]4;236;rgb:32/30/2f\007\033\\"

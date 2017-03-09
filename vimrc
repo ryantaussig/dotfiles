@@ -1,7 +1,7 @@
 """"""""
 " author: ryantaussig
-" last update: 2017-02-17
-" license: GPLv2.0
+" last update: 2017-03-08
+" license: MIT/Expat
 "
 " contents:
 "   1. general settings
@@ -34,7 +34,7 @@ filetype plugin indent on
 
 " set initial gui window size
 if has("gui_running")
-    set lines=32 columns=84
+    set lines=27 columns=84
 endif
 
 " no visual or audible bell
@@ -57,8 +57,10 @@ set showmode
 " visual autocomplete
 set wildmenu
 
-" show line numbers
-set number
+" show line numbers in gui
+if has('gui_running')
+    set number
+endif
 
 " enable [], {}, and () pair matching
 set showmatch

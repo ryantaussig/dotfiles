@@ -2,8 +2,8 @@
 
 ########
 # author: ryantaussig
-# last update: 2017-02-02
-# license: GPLv2.0
+# last update: 2017-03-08
+# license: MIT/Expat
 #
 # abstract:
 #   the following script installs basic applications and corresponding documentation.
@@ -31,7 +31,7 @@ sudo apt-get install asciidoctor asciidoctor-doc
 
 # install sphinx, related packages, and documentation
 
-sudo apt-get install python-sphinx python3-sphinx python-doc8 python3-doc8  python-numpydoc python3-numpydoc python-doc8-doc sphinx-doc
+sudo apt-get install python-sphinx python3-sphinx rst2pdf python-doc8 python3-doc8 python-numpydoc python3-numpydoc python-doc8-doc sphinx-doc
 
 # install libreoffice metapackage
 
