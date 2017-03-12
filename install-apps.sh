@@ -2,7 +2,7 @@
 
 ########
 # author: ryantaussig
-# last update: 2017-03-08
+# last update: 2017-03-12
 # license: MIT/Expat
 #
 # abstract:
@@ -21,9 +21,17 @@ sudo apt-get install vim-gnome
 
 sudo apt-get install git git-doc
 
+# install python and python3 (almost certainly already installed)
+
+sudo apt-get install python python3 python-doc python3-doc
+
 # install ssh metapackage
 
 sudo apt-get install ssh
+
+# install w3m with image support
+
+sudo apt-get install w3m w3m-img
 
 # install asciidoctor
 
