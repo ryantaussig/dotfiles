@@ -1,14 +1,13 @@
 """"""""
 " author: ryantaussig
-" last update: 2017-03-08
-" license: MIT/Expat
+" last update: 2017-03-17
+" license: MIT
 "
 " contents:
 "   1. general settings
 "   2. user interface settings
 "   3. custom keybindings
-"   3. colors and fonts
-"   4. tabs
+"   4. colors and fonts
 "   5. asciidoc-specific
 "   6. python-specific
 """"""""
@@ -125,20 +124,7 @@ else
 endif
 
 """"""""
-" 5. tabs
-""""""""
-
-" replace tabs with spaces
-set expandtab
-
-" set tab (reading) and softtab (editing) to 4 spaces
-set tabstop=4 softtabstop=4
-
-" set indent to 4 spaces
-set shiftwidth=4 
-
-""""""""
-" 6. asciidoc-specific
+" 5. asciidoc-specific
 """"""""
 
 " set filetype association
@@ -151,11 +137,17 @@ autocmd filetype asciidoc set autoindent
 autocmd filetype asciidoc set spell
 
 """"""""
-" 7. python-specific
+" 6. python-specific
 """"""""
 
+" replace tabs with spaces
+autocmd filetype py set expandtab
+
+" set indent to 4 spaces
+autocmd filetype py set shiftwidth=4 
+
 " use all python highlighting
-let python_highlight_all = 1
+autocmd filetype py let python_highlight_all = 1
 
 " enable auto indentation
 autocmd filetype py set autoindent
