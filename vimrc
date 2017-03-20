@@ -113,9 +113,6 @@ else
     set background=dark
 endif
 
-" source .vimrc after each save so variant changes automatically
-autocmd bufwritepost * source ~/.vimrc
-
 " set gui font
 if has('gui_win32')
     set guifont=DejaVu\ Sans\ Mono:h12
