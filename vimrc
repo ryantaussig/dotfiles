@@ -33,7 +33,7 @@ filetype plugin indent on
 
 " set initial gui window size
 if has("gui_running")
-    set lines=27 columns=84
+    set lines=999 columns=84 " 80 col., max lines
 endif
 
 " no visual or audible bell
@@ -46,6 +46,14 @@ autocmd GUIEnter * set visualbell t_vb=
 
 " set command line height
 set cmdheight=2
+
+" set indent to 4 spaces and hardtab to 8
+set tabstop=8
+set shiftwidth=4
+
+" use tab key for indentation and expand at tabstops
+set smarttab
+set expandtab
 
 " show last command
 set showcmd
@@ -76,8 +84,12 @@ set incsearch
 " highlight serach matches
 set hlsearch
 
-" set maximum number of open tabs
-set tabpagemax=16
+" fancy unicode list characters in gvim
+if has('gui_running')
+    set listchars=tab:»\ ,trail:·,eol:¶,extends:…,precedes:…,conceal:×,nbsp:·
+else
+    set listchars=tab:>\ ,trail:.,eol:$,extends:\#,precedes:\#,conceal:X,nbsp:~
+endif
 
 """"""""
 " 3. custom keybindings
@@ -91,6 +103,9 @@ nnoremap <leader>b :call gruvbox#bg_toggle()<CR>
 
 " toggle search highlighting on an off with space-h
 nnoremap <leader>h :call gruvbox#hls_toggle()<CR>
+
+"toggle list characters
+nnoremap <leader>l :set invlist<CR>
 
 """"""""
 " 4. colors and fonts
@@ -136,12 +151,6 @@ autocmd filetype asciidoc set spell
 """"""""
 " 6. python-specific
 """"""""
-
-" replace tabs with spaces
-autocmd filetype py set expandtab
-
-" set indent to 4 spaces
-autocmd filetype py set shiftwidth=4 
 
 " use all python highlighting
 autocmd filetype py let python_highlight_all = 1
