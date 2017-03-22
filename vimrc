@@ -85,11 +85,7 @@ set incsearch
 set hlsearch
 
 " fancy unicode list characters in gvim
-if has('gui_running')
-    set listchars=tab:»\ ,trail:·,eol:¶,extends:…,precedes:…,conceal:×,nbsp:·
-else
-    set listchars=tab:>\ ,trail:.,eol:$,extends:\#,precedes:\#,conceal:X,nbsp:~
-endif
+set listchars=tab:→\ ,trail:·,eol:¶,extends:…,precedes:…,conceal:X,nbsp:↔
 
 """"""""
 " 3. custom keybindings
