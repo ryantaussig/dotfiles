@@ -1,8 +1,11 @@
-= ryantaussig's dotfiles
+######################
+ryantaussig's dotfiles
+######################
 Ryan Taussig
-2017-03-08
+2017-09-30
 
-== copyright notice
+copyright notice
+================
 
 copyright (c) 2015, 2016, 2017 Ryan Taussig  
 
