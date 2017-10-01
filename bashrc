@@ -1,7 +1,7 @@
 ########
 # author: ryantaussig
 # last modified: 2017-03-08
-# license: MIT/Expat
+# license: MIT
 #
 # This bashrc is adapted from the debian/ubuntu default version.
 ########
@@ -150,7 +150,7 @@ alias dicten=dict-gcide-and-wordnet
 
 # Custom 256 color palette for gruvbox
 
-source "$HOME/dotfiles/gruvbox_256palette.sh"
+source "$HOME/dotfiles/gruvbox-256palette.sh"
 
 ## Toggle light and dark colorscheme based on time of day
 #TIME=$(date "+%H")

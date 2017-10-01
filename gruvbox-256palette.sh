@@ -2,6 +2,7 @@
 
 # author: morhetz <morhetz@gmail.com>
 # source: https://github.com/morhetz/gruvbox
+# license: X11
 # this comment added for reference by ryantaussig
 
 if [ "${TERM%%-*}" = "screen" ]; then
