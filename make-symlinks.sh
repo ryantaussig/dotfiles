@@ -14,7 +14,7 @@
 
 dir=~/dotfiles                    # dotfiles directory
 olddir=~/dotfiles_old             # old dotfiles backup directory
-files="bashrc vimrc vim ipython Xresources"    # list of files/folders to symlink in homedir
+files="bashrc vimrc vim Xresources"    # list of files/folders to symlink in homedir
 
 ##########
 
