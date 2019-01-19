@@ -1,6 +1,6 @@
 """"""""
 " author: ryantaussig
-" last update: 2017-03-17
+" last update: 2019-01-18
 " license: MIT
 "
 " contents:
@@ -8,7 +8,7 @@
 "   2. user interface settings
 "   3. custom keybindings
 "   4. colors and fonts
-"   5. asciidoc-specific
+"   5. netrw tweaks
 "   6. python-specific
 """"""""
 
@@ -132,17 +132,23 @@ else
 endif
 
 """"""""
-" 5. asciidoc-specific
+" 5. netrw tweaks
 """"""""
 
-" set filetype association
-autocmd bufread,bufnewfile *.adoc set filetype=asciidoc
+" no banner
+let g:netrw_banner = 0
 
-" enable auto indentation
-autocmd filetype asciidoc set autoindent
+" tree-style listing
+let g:netrw_liststyle = 3
 
-" enable spell check
-autocmd filetype asciidoc set spell
+" open files in previous window not netrw window (3 for new tab)
+let g:netrw_browse_split = 4
+
+" open in vertical split
+let g:netrw_altv = 1
+
+" set split width
+let g:netrw_winsize = 25
 
 """"""""
 " 6. python-specific
