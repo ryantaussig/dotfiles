@@ -2,85 +2,90 @@
 
 ########
 # author: ryantaussig
-# last update: 2017-03-12
+# last update: 2019-01-24
 # license: MIT
 #
 # abstract:
-#   the following script installs basic applications and corresponding documentation.
+#   The following script installs basic applications and corresponding documentation. It is intended for Ubuntu/Debian systems.
 ########
 
-# install vim and documentation
+set -euo pipefail
 
-sudo apt-get install vim-nox vim-doc
+# critical cli applications
+echo "Updating package index and installing critical CLI applications."
+sudo apt update
+sudo apt install -y vim-nox tmux git ssh tree lnav peco tig ranger ncdu htop wget w3m w3m-img
 
-# install gvim
+# desktop cli applications
+while true; do
+    read -rp "Do you wish to install the Desktop CLI applications? (y/n): " DCLI
+    if [[ "$DCLI" == "y" ]]; then
+        echo "Installing Desktop CLI applications."
+        sudo apt install -y snapd pandoc cmus ripit mpv youtube-dl dict dict-*
+    elif [[ "$DCLI" == "n" ]]; then
+        echo "Skipping Desktop CLI applications."
+    else
+        echo "Please respond y or n."
+        continue
+    fi
+    break
+done
 
-sudo apt-get install vim-gnome
+# workstation cli applications
+while true; do
+    read -rp "Do you wish to install the Workstation CLI applications? (y/n): " WCLI
+    if [[ "$WCLI" == "y" ]]; then
+        echo "Installing Workstation CLI applications."
+        export GCLOUD_SDK_REPO="cloud-sdk-$(lsb_release -c -s)"
+        echo "deb http://packages.cloud.google.com/apt $GCLOUD_SDK_REPO main" | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
+        curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
+        sudo apt update
+        sudo apt install -y google-cloud-sdk kubectl docker.io python3 python3-pip php composer nodejs npm
+        sudo pip3 install phpserialize mysql-connector-python google-cloud-storage
+    elif [[ "$WCLI" == "n" ]]; then
+        echo "Skipping Workstation CLI applications."
+    else
+        echo "Please respond y or n."
+        continue
+    fi
+    break
+done
 
-# install git (should already be installed if this script was obtained from github)
 
-sudo apt-get install git git-doc
+# gui applications and settings
+while true; do
+    read -rp "Do you wish to install the GUI applications and settings?" GUI
+    if [[ "$GUI" == "y" ]]; then
+        echo "Installing GUI applications."
+        sudo apt install -y vim-gtk3 vlc libreoffice gnome-tweaks vim-doc git-doc
+        wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+        sudo dpkg -i google-chrome-stable_current_amd64.deb
+        rm google-chrome-stable_current_amd64.deb
+        sudo snap install slack --classic
+        echo "Running Gogh to install gnome-terminal color schemes."
+        bash -c "$(wget -qO- https://git.io/vQgMr)" # used to generate a gruvbox-dark profile for gnome-terminal
+    elif [[ "$GUI" == "n" ]]; then
+        echo "Skipping GUI applications."
+    else
+        echo "Please respond y or n."
+        continue
+    fi
+    break
+done
 
-# install python and python3 (almost certainly already installed) and documentation
 
-sudo apt-get install python python-doc python-examples python3 python3-doc python3-examples
+########
+# other (misc. applications, not currently needed, explore at a later date)
+########
 
-# install ssh metapackage
+## ham radio
+#sudo apt install -y chirp hamradio* ax25-applications ax25-applications ax25-xapplications ax25mail-utils gnuradio gnuradio-dev gnuradio-doc direwolf direwolf-docs
 
-sudo apt-get install ssh
+## data and design
+#sudo apt install -y octave-* freecad 
 
-# install w3m with image support
+## install scipy stack for python with documentation (outdated since change to jupyter)
+#sudo apt install -y python-numpy python-scipy python-matplotlib ipython ipython-notebook python-pandas python-sympy python-nose2 python3-numpy python3-scipy python3-matplotlib ipython3 ipython3-notebook python3-pandas python3-sympy python3-nose2 python-numpy-doc python-scipy-doc python-matplotlib-doc ipython-doc python-pandas-doc python-sympy-doc python-nose2-doc python-pyfftw python3-pyfftw cython cython cython-doc
 
-sudo apt-get install w3m w3m-img
-
-# install asciidoctor
-
-sudo apt-get install asciidoctor asciidoctor-doc
-
-# install python-based LAPP webstack, related framework, etc.
-
-sudo apt-get install python-django python3-django python-django-doc python-psycopg2 python3-psycopg2 python-psycopg2-doc python-sqlparse python3-sqlparse python-sqlparse-doc python-yaml python3-yaml apache2 apache2-doc postgresql postgresql-doc
-
-# install sphinx, related packages, and documentation
-
-sudo apt-get install python-sphinx python3-sphinx rst2pdf python-doc8 python3-doc8 python-numpydoc python3-numpydoc python-doc8-doc sphinx-doc
-
-# install scipy stack for python 2
-
-sudo apt-get install python-numpy python-scipy python-matplotlib ipython ipython-notebook python-pandas python-sympy python-nose2
-
-# install scipy stack for python 3
-
-sudo apt-get install python3-numpy python3-scipy python3-matplotlib ipython3 ipython3-notebook python3-pandas python3-sympy python3-nose2
-
-# install documentation for scipy stack
-
-sudo apt-get install python-numpy-doc python-scipy-doc python-matplotlib-doc ipython-doc python-pandas-doc python-sympy-doc python-nose2-doc 
-
-# install supplements to scipy stack with documentation
-
-sudo apt-get install python-pyfftw python3-pyfftw cython cython cython-doc
-
-# install octave, its extended packages, and documentation
-
-sudo apt-get install octave*
-
-# install freecad and documentation
-
-sudo apt-get install freecad freecad-doc freecad-dev
-
-# install amateur radio applications with available documentation
-
-sudo apt-get install chirp hamradio* ax25-apps ax25-tools ax25-xtools ax25mail-utils gnuradio gnuradio-dev gnuradio-doc direwolf direwolf-docs
-
-# install dictionary, thesaurus, and gazetteer
-
-sudo apt-get install dict dict-*
-
-# install libreoffice metapackage
-
-sudo apt-get install libreoffice
-
-# install youtube-dl
-
-sudo apt-get install youtube-dl
+## private cloud messaging slack-alternative
+#sudo snap install mattermost-desktop

@@ -3,18 +3,18 @@
 ########
 # author: michaeljsmalley
 # modified by: ryantaussig
-# last updated: 2017-03-08
+# last updated: 2019-01-24
 # license: MIT
 #
 # abstract:
-#   This script creates symlinks from the home directory to any desired dotfiles in ~/dotfiles
+#   This script creates symlinks from the home directory to any desired dotfiles in ~/dotfiles. By default this only installs vim settings. Other files may be added to the $files line depending on the environment.
 ########
 
 ########## Variables
 
 dir=~/dotfiles                    # dotfiles directory
 olddir=~/dotfiles_old             # old dotfiles backup directory
-files="bashrc vimrc vim Xresources"    # list of files/folders to symlink in homedir
+files="vimrc vim"    # list of files/folders to symlink in homedir
 
 ##########
 
