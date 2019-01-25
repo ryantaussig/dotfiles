@@ -63,7 +63,7 @@ while true; do
         rm google-chrome-stable_current_amd64.deb
         sudo snap install slack --classic
         echo "Running Gogh to install gnome-terminal color schemes."
-        bash -c "$(wget -qO- https://git.io/vQgMr)" # used to generate a gruvbox-dark profile for gnome-terminal
+#        bash -c "$(wget -qO- https://git.io/vQgMr)" # used to generate a gruvbox-dark profile for gnome-terminal. not required unless additional schemes are needed other than those provided in gnome-terminal.dconf
     elif [[ "$GUI" == "n" ]]; then
         echo "Skipping GUI applications."
     else
