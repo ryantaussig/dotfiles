@@ -1,6 +1,8 @@
-# ryantaussig's dotfiles
-author: Ryan Taussig
-date: 2019-01-25
+# dotfiles
+
+| author | Ryan Taussig |
+| ------ | ------------ |
+| last updated | 2019-01-25 |
 
 ## License
 
