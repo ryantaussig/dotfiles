@@ -1,6 +1,5 @@
 """"""""
 " author: ryantaussig
-" last update: 2019-01-18
 " license: MIT
 "
 " contents:
@@ -18,6 +17,9 @@
 
 " turn off vi compatibility
 set nocompatible
+
+" force 256 color mode
+set t_Co=256
 
 " only redraw screen when necessary
 set lazyredraw
