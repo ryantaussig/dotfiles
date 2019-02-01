@@ -3,7 +3,6 @@
 ########
 # author: michaeljsmalley
 # modified by: ryantaussig
-# last updated: 2019-01-24
 # license: MIT
 #
 # abstract:

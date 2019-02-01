@@ -1,6 +1,5 @@
 ########
 # author: ryantaussig
-# last modified: 2017-03-08
 # license: MIT
 #
 # This bashrc is adapted from the debian/ubuntu default version.

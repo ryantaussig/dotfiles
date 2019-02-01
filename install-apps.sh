@@ -2,7 +2,6 @@
 
 ########
 # author: ryantaussig
-# last update: 2019-01-24
 # license: MIT
 #
 # abstract:
@@ -14,14 +13,14 @@ set -euo pipefail
 # critical cli applications
 echo "Updating package index and installing critical CLI applications."
 sudo apt update
-sudo apt install -y vim-nox tmux git ssh tree lnav peco tig ranger ncdu htop wget w3m w3m-img
+sudo apt install -y vim-nox tmux git ssh tree lnav peco tig ranger ncdu htop wget w3m w3m-img snapd iperf
 
 # desktop cli applications
 while true; do
     read -rp "Do you wish to install the Desktop CLI applications? (y/n): " DCLI
     if [[ "$DCLI" == "y" ]]; then
         echo "Installing Desktop CLI applications."
-        sudo apt install -y snapd pandoc cmus ripit mpv youtube-dl dict dict-*
+        sudo apt install -y mkdocs pandoc cmus ripit mpv youtube-dl dict dict-*
     elif [[ "$DCLI" == "n" ]]; then
         echo "Skipping Desktop CLI applications."
     else
@@ -40,7 +39,7 @@ while true; do
         echo "deb http://packages.cloud.google.com/apt $GCLOUD_SDK_REPO main" | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
         curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
         sudo apt update
-        sudo apt install -y google-cloud-sdk kubectl docker.io python3 python3-pip php composer nodejs npm
+        sudo apt install -y google-cloud-sdk kubectl docker.io python3 python3-pip php composer nodejs npm certbot openssl
         sudo pip3 install phpserialize mysql-connector-python google-cloud-storage
     elif [[ "$WCLI" == "n" ]]; then
         echo "Skipping Workstation CLI applications."
@@ -61,7 +60,7 @@ while true; do
         wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
         sudo dpkg -i google-chrome-stable_current_amd64.deb
         rm google-chrome-stable_current_amd64.deb
-        sudo snap install slack --classic
+        sudo snap install -y slack --classic
         echo "Running Gogh to install gnome-terminal color schemes."
 #        bash -c "$(wget -qO- https://git.io/vQgMr)" # used to generate a gruvbox-dark profile for gnome-terminal. not required unless additional schemes are needed other than those provided in gnome-terminal.dconf
     elif [[ "$GUI" == "n" ]]; then
@@ -84,8 +83,6 @@ done
 ## data and design
 #sudo apt install -y octave-* freecad 
 
-## install scipy stack for python with documentation (outdated since change to jupyter)
-#sudo apt install -y python-numpy python-scipy python-matplotlib ipython ipython-notebook python-pandas python-sympy python-nose2 python3-numpy python3-scipy python3-matplotlib ipython3 ipython3-notebook python3-pandas python3-sympy python3-nose2 python-numpy-doc python-scipy-doc python-matplotlib-doc ipython-doc python-pandas-doc python-sympy-doc python-nose2-doc python-pyfftw python3-pyfftw cython cython cython-doc
-
-## private cloud messaging slack-alternative
-#sudo snap install mattermost-desktop
+## private cloud messaging slack/discord/irc alternatives
+#sudo apt install -y matrix-synapse revolt
+#sudo snap install -y mattermost-desktop
