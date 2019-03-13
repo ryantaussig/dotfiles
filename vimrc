@@ -49,12 +49,10 @@ autocmd GUIEnter * set visualbell t_vb=
 " set command line height
 set cmdheight=2
 
-" set indent to 4 spaces and hardtab to 8
+" set new tabs to insert 4 individual space characters but keep hard tab at 8 for compatibility with legacy documents
 set tabstop=8
+set softtabstop=4
 set shiftwidth=4
-
-" use tab key for indentation and expand at tabstops
-set smarttab
 set expandtab
 
 " show last command
@@ -87,7 +85,7 @@ set incsearch
 set hlsearch
 
 " fancy unicode list characters in gvim
-set listchars=tab:→\ ,trail:·,eol:¶,extends:…,precedes:…,conceal:X,nbsp:↔
+set listchars=tab:→\ ,trail:·,eol:¶,extends:…,precedes:…,conceal:•,nbsp:↔
 
 """"""""
 " 3. custom keybindings

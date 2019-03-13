@@ -6,14 +6,16 @@
 # license: MIT
 #
 # abstract:
-#   This script creates symlinks from the home directory to any desired dotfiles in ~/dotfiles. By default this only installs vim settings. Other files may be added to the $files line depending on the environment.
+#   This script creates symlinks from the home directory to any desired dotfiles in ~/dotfiles.
+#   By default this only installs vim and tmux settings.
+#   Other files may be added to the `$files` line depending on the environment.
 ########
 
 ########## Variables
 
-dir=~/dotfiles                    # dotfiles directory
-olddir=~/dotfiles_old             # old dotfiles backup directory
-files="vimrc vim"    # list of files/folders to symlink in homedir
+dir=~/dotfiles                   # dotfiles directory
+olddir=~/dotfiles_old            # old dotfiles backup directory
+files="vimrc vim tmux.conf"      # list of files/folders to symlink in homedir
 
 ##########
 
