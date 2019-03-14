@@ -6,14 +6,21 @@ default='e3fb2448-0956-4ec0-b0af-8dab713dfeb8'
 foreground-color='#ebebdbdbb2b2'
 visible-name='Gruvbox Dark'
 palette=['#282828282828', '#cccc24241d1d', '#989897971a1a', '#d7d799992121', '#454585858888', '#b1b162628686', '#68689d9d6a6a', '#a8a899998484', '#929283837474', '#fbfb49493434', '#b8b8bbbb2626', '#fafabdbd2f2f', '#8383a5a59898', '#d3d386869b9b', '#8e8ec0c07c7c', '#ebebdbdbb2b2']
+cursor-shape='block'
 use-system-font=false
 use-theme-colors=false
-font='DejaVu Sans Mono 12'
+use-transparent-background=false
+font='DejaVu Sans Mono for Powerline 12'
+use-theme-transparency=true
 allow-bold=true
 use-theme-background=false
 bold-color-same-as-fg=true
 bold-color='#ebebdbdbb2b2'
 background-color='#282828282828'
+background-transparency-percent=15
+
+[legacy/profiles:/:4d0a5c96-e5b5-499b-a2c7-864953f2e7a2]
+visible-name='test'
 
 [legacy/profiles:/:b0aebfdd-7675-404e-bc56-2f0fb74cc090]
 foreground-color='#3c3c38383636'
@@ -21,7 +28,7 @@ visible-name='Gruvbox Light'
 palette=['#fbfbf1f1c7c7', '#cccc24241d1d', '#989897971a1a', '#d7d799992121', '#454585858888', '#b1b162628686', '#68689d9d6a6a', '#7c7c6f6f6464', '#929283837474', '#9d9d00000606', '#797974740e0e', '#b5b576761414', '#070766667878', '#8f8f3f3f7171', '#42427b7b5858', '#3c3c38383636']
 use-system-font=false
 use-theme-colors=false
-font='DejaVu Sans Mono 12'
+font='DejaVu Sans Mono for Powerline 12'
 allow-bold=true
 use-theme-background=false
 bold-color-same-as-fg=true

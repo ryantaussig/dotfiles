@@ -57,25 +57,27 @@ while true; do
     read -rp "Do you wish to install the GUI applications and settings?" GUI
     if [[ "$GUI" == "y" ]]; then
         echo "Installing GUI applications."
-        sudo apt install -y vim-gtk3 vlc libreoffice gnome-tweaks vim-doc git-doc
+        sudo apt install -y vlc libreoffice gnome-tweaks vim-airline vim-fugitive vim-doc git-doc
         wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
         sudo dpkg -i google-chrome-stable_current_amd64.deb
         rm google-chrome-stable_current_amd64.deb
         sudo snap install -y slack --classic
-        echo "Creating $HOME/bin and $HOME/repos."
+        echo "Creating $HOME/bin"
         mkdir ~/bin
-        mkdir ~/repos
-        pushd ~/repos
+        pushd ~/bin
+        echo "Installing Texpander prerequisites and installing Texpander to ~/bin. Add a keyboard shortcut to use it."
+        sudo apt install -y xsel xdotool zenity
         git clone https://github.com/leehblue/texpander
-        cp texpander/texpander.sh ~/bin/texpander.sh
-        echo "Texpander installed in $HOME/bin. Add a keyboard shortcut calling texpander.sh to use it."
+        echo "Installing patched fonts for powerline/airline."
+        git clone https://github.com/powerline/powerline-fonts
+        ~/bin/powerline-fonts/install.sh
         popd
         echo "Importing gnome terminal themes."
         dconf load /org/gnome/terminal < $(dirname $0)/gnome-terminal.dconf
-        # the next 2 lines are used to generate a coloscheme profiles for gnome-terminal. 
+        # the next 2 lines are used to generate coloscheme profiles for gnome-terminal.
         # uncomment if schemes other than those provided in gnome-terminal.dconf are desired.
 #       echo "Running Gogh to install gnome-terminal color schemes."
-#       bash -c "$(wget -qO- https://git.io/vQgMr)"   
+#       bash -c "$(wget -qO- https://git.io/vQgMr)"
     elif [[ "$GUI" == "n" ]]; then
         echo "Skipping GUI applications."
     else
@@ -94,7 +96,7 @@ done
 #sudo apt install -y chirp hamradio* ax25-applications ax25-applications ax25-xapplications ax25mail-utils gnuradio gnuradio-dev gnuradio-doc direwolf direwolf-docs
 
 ## data and design
-#sudo apt install -y octave-* freecad 
+#sudo apt install -y octave-* freecad
 
 ## private cloud messaging slack/discord/irc alternatives
 #sudo apt install -y matrix-synapse revolt

@@ -9,6 +9,7 @@
 "   4. colors and fonts
 "   5. netrw tweaks
 "   6. python-specific
+"   7. addons
 """"""""
 
 """"""""
@@ -21,9 +22,6 @@ set nocompatible
 " force 256 color mode
 set t_Co=256
 
-" only redraw screen when necessary
-set lazyredraw
-
 " reload files
 set autoread
 
@@ -33,21 +31,15 @@ set history=2048
 " enable filetype plugins
 filetype plugin indent on
 
-" set initial gui window size
-if has("gui_running")
-    set lines=999 columns=84 " 80 col., max lines
-endif
-
 " no visual or audible bell
 set noerrorbells visualbell t_vb=
-autocmd GUIEnter * set visualbell t_vb=
 
 """"""""
 " 2. user interface settings
 """"""""
 
 " set command line height
-set cmdheight=2
+set cmdheight=1
 
 " set new tabs to insert 4 individual space characters but keep hard tab at 8 for compatibility with legacy documents
 set tabstop=8
@@ -58,16 +50,11 @@ set expandtab
 " show last command
 set showcmd
 
-" show mode
-set showmode
-
 " visual autocomplete
 set wildmenu
 
-" show line numbers in gui
-if has('gui_running')
-    set number
-endif
+" show line numbers
+set number
 
 " enable [], {}, and () pair matching
 set showmatch
@@ -111,25 +98,8 @@ nnoremap <leader>l :set invlist<CR>
 syntax enable
 
 " set colorscheme to gruvbox
-" in addition set light or dark variant based on assumed ambient light
-if has("gui_running")
-    colorscheme gruvbox
-    if strftime('%H') >= 6 && strftime ('%H') <= 18
-        set background=light
-    else
-        set background=dark
-    endif
-else 
-    colorscheme gruvbox
-    set background=dark
-endif
-
-" set gui font
-if has('gui_win32')
-    set guifont=DejaVu\ Sans\ Mono:h12
-else
-    set guifont=DejaVu\ Sans\ Mono\ 12
-endif
+colorscheme gruvbox
+set background=dark
 
 """"""""
 " 5. netrw tweaks
@@ -165,3 +135,13 @@ autocmd filetype py set smartindent
 
 " set textwidth to meet pep-8 standards
 autocmd filetype py textwidth=79
+
+""""""""
+" 7. addons
+""""""""
+
+" vim-airline: enable powerline fonts, use tomorrow theme for gruvbox compatibility, always show laststatus to enable airline
+let g:airline_powerline_fonts = 1
+let g:airline_theme = 'tomorrow'
+set laststatus=2
+
