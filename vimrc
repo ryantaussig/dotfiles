@@ -47,9 +47,6 @@ set softtabstop=4
 set shiftwidth=4
 set expandtab
 
-" show last command
-set showcmd
-
 " visual autocomplete
 set wildmenu
 
@@ -80,9 +77,6 @@ set listchars=tab:→\ ,trail:·,eol:¶,extends:…,precedes:…,conceal:•,nbs
 
 " set leader to space
 let mapleader="\<space>"
-
-" toggle gruvbox background with space-b
-nnoremap <leader>b :call gruvbox#bg_toggle()<CR>
 
 " toggle search highlighting on an off with space-h
 nnoremap <leader>h :call gruvbox#hls_toggle()<CR>
@@ -140,8 +134,9 @@ autocmd filetype py textwidth=79
 " 7. addons
 """"""""
 
-" vim-airline: enable powerline fonts, use tomorrow theme for gruvbox compatibility, always show laststatus to enable airline
+" vim-airline: enable powerline fonts, use tomorrow theme for gruvbox compatibility, always show laststatus to enable airline, showmode not needed with airline
 let g:airline_powerline_fonts = 1
-let g:airline_theme = 'tomorrow'
+let g:airline_theme = 'gruvbox'
 set laststatus=2
+set noshowmode
 

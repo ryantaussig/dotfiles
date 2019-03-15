@@ -64,7 +64,7 @@ if [ -n "$force_color_prompt" ]; then
 fi
 
 if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\n\[\033[01;32m\]\u@\H \[\033[01;34m\]\w\n\[\033[01;00m\]$ '
+    PS1='${debian_chroot:+($debian_chroot)}\n\[\033[01;32m\]\u@\H \[\033[01;34m\]\w\n\[\033[01;00m\] '
 else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi
@@ -125,15 +125,6 @@ fi
 
 # Custom functions and  aliases
 
-# Convert a .adoc file to .pdf
-# syntax is `adoc2pdf [filename]` where filename is the file without its extension
-asciidoctor-and-wkhtmltopdf() {
-    asciidoctor $1.adoc
-    wkhtmltopdf -s Letter $1.html $1.pdf
-    rm $1.html
-}
-alias adoc2pdf=asciidoctor-and-wkhtmltopdf
-
 # Quick update and upgrade
 update-and-upgrade() {
     sudo apt update
@@ -148,13 +139,5 @@ dict-gcide-and-wordnet() {
 alias dicten=dict-gcide-and-wordnet
 
 # Custom 256 color palette for gruvbox
+source "$HOME/bin/gruvbox/gruvbox_256palette.sh"
 
-source "$HOME/dotfiles/gruvbox-256palette.sh"
-
-## Toggle light and dark colorscheme based on time of day
-#TIME=$(date "+%H")
-#if $TIME >= 6 && $TIME <= 18
-#    xrdb -merge ~/.Xresources.light
-#else
-#    xrdb -merge ~/.Xresources.dark
-#fi
