@@ -7,7 +7,7 @@
 
 ## Installation
 
-Run the `install.sh` script to install the dotfiles and, optionally, numerous applications.
+Run the `install.sh` script to install the dotfiles and optional applications.
 NOTE: The install script only applies gnome-terminal settings if the GUI options are selected.
 
 ## License

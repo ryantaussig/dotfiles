@@ -68,8 +68,8 @@ set incsearch
 " highlight serach matches
 set hlsearch
 
-" fancy unicode list characters in gvim
-set listchars=tab:→\ ,trail:·,eol:¶,extends:…,precedes:…,conceal:•,nbsp:↔
+" fancy unicode list characters
+set listchars=tab:►\ ,trail:◊,eol:¶,extends:…,precedes:…,conceal:●,nbsp:␣
 
 """"""""
 " 3. custom keybindings
