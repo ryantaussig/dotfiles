@@ -78,18 +78,18 @@ while true; do
         sudo dpkg -i google-chrome-stable_current_amd64.deb
         rm google-chrome-stable_current_amd64.deb
 
-        echo "Creating ~/git."
-        mkdir -p $HOME/git
+        echo "Creating ~/src."
+        mkdir -p $HOME/src
 
-        # install vim addons using vim 8+ built in package management and symlinks for central git repo management
+        # install vim addons using vim 8's built-in package management and create symlinks in ~/.vim for easy upgrade management
         echo "Installing vim addons."
-        git clone http://github.com/morhetz/gruvbox $HOME/git/gruvbox
-        git clone http://github.com/vim-airline/vim-airline $HOME/git/vim-airline
-        git clone http://github.com/tpope/vim-fugitive $HOME/git/vim-fugitive
+        git clone http://github.com/morhetz/gruvbox $HOME/src/gruvbox
+        git clone http://github.com/vim-airline/vim-airline $HOME/src/vim-airline
+        git clone http://github.com/tpope/vim-fugitive $HOME/src/vim-fugitive
         mkdir -p $HOME/.vim/pack/addons/{start,opt}/
-        ln -s $HOME/git/gruvbox $HOME/.vim/pack/addons/start/gruvbox
-        ln -s $HOME/git/vim-airline $HOME/.vim/pack/addons/start/vim-airline
-        ln -s $HOME/git/vim-fugitive $HOME/.vim/pack/addons/start/vim-fugitive
+        ln -s $HOME/src/gruvbox $HOME/.vim/pack/addons/start/gruvbox
+        ln -s $HOME/src/vim-airline $HOME/.vim/pack/addons/start/vim-airline
+        ln -s $HOME/src/vim-fugitive $HOME/.vim/pack/addons/start/vim-fugitive
 
         # install fonts patched with powerline symbols (required for terminal themes and vim/tmux addons)
         echo "Installing powerline fonts."
@@ -102,7 +102,7 @@ while true; do
         # install texpander and dependencies
         echo "Installing Texpander. NOTE: Remember to add a keyboard shortcut."
         sudo apt install -y xsel xdotool zenity
-        git clone https://github.com/leehblue/texpander $HOME/git/texpander
+        git clone https://github.com/leehblue/texpander $HOME/src/texpander
         mkdir $HOME/.texpander
 
         echo "Importing gnome terminal themes."
