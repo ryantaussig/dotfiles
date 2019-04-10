@@ -109,7 +109,7 @@ while true; do
         mkdir $HOME/.texpander
 
         echo "Importing gnome terminal themes."
-        dconf load /org/gnome/terminal < $DOTFILES_DIR/org-gnome-terminal.dconf
+        dconf load /org/gnome/terminal/ < $DOTFILES_DIR/org-gnome-terminal.dconf
     elif [[ "$GUI" == "n" ]]; then
         echo "Skipping..."
     else
