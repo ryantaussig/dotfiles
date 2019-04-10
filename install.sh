@@ -25,7 +25,7 @@ echo "Installing dotfile symlinks."
 mkdir -p $OLD_DIR
 pushd $DOTFILES_DIR
 for DOTFILE in $DOTFILES; do
-    if [[ -f "$HOME/.$DOTFILE"]]; then
+    if [[ -f "$HOME/.$DOTFILE" ]]; then
         echo "Moving existing $DOTFILE to $OLD_DIR"
         mv $HOME/.$DOTFILE $OLD_DIR
     fi
