@@ -62,15 +62,16 @@ while true; do
         echo "Installing..."
 
         # install general packages
-        sudo apt install -y gnome-terminal pandoc cmus ripit mpv youtube-dl dict dict-* vlc libreoffice gnome-tweaks python3 python3-pip
+        sudo apt install -y gnome-terminal pandoc cmus ripit mpv youtube-dl dict dict-* vlc libreoffice gnome-tweaks python3 python3-pip vim-gui-common
 
         # install work stuff
-        sudo apt install -y google-cloud-sdk kubectl docker.io php composer nodejs npm certbot openssl mysql-workbench zstd snapd
+        sudo apt install -y google-cloud-sdk kubectl docker.io certbot openssl mysql-workbench zstd snapd
         sudo snap install -y slack --classic
         wget https://dl.google.com/cloudsql/cloud_sql_proxy.linux.amd64 -O /usr/local/bin/cloud_sql_proxy
 
-        # optional stuff not available through apt/snap
-        # it is preferable to install these in a venv on a per-project basis
+        # optional stuff
+        #sudo apt install -y php composer nodejs npm
+        # pip packages. it is better practice to install these in a venv on a per-project basis
         #sudo -H pip3 install mkdocs mkdocs-material pygments phpserialize mysql-connector-python google-cloud-storage awscli
 
         # install chrome manually
@@ -83,9 +84,9 @@ while true; do
 
         # install vim addons using vim 8's built-in package management and create symlinks in ~/.vim for easy upgrade management
         echo "Installing vim addons."
-        git clone http://github.com/morhetz/gruvbox /usr/local/src/gruvbox
-        git clone http://github.com/vim-airline/vim-airline /usr/local/src/vim-airline
-        git clone http://github.com/tpope/vim-fugitive /usr/local/src/vim-fugitive
+        sudo git clone https://github.com/morhetz/gruvbox /usr/local/src/gruvbox
+        sudo git clone https://github.com/vim-airline/vim-airline /usr/local/src/vim-airline
+        sudo git clone https://github.com/tpope/vim-fugitive /usr/local/src/vim-fugitive
         mkdir -p $HOME/.vim/pack/addons/{start,opt}/
         ln -s /usr/local/src/gruvbox $HOME/.vim/pack/addons/start/gruvbox
         ln -s /usr/local/src/vim-airline $HOME/.vim/pack/addons/start/vim-airline
@@ -96,7 +97,7 @@ while true; do
         git clone https://github.com/powerline/fonts /tmp/powerline-fonts
         # change powerline's install script to install globally
         sed -i 's/$HOME\/.local/\/usr\/local/g' /tmp/powerline-fonts/install.sh
-        /tmp/powerline-fonts/install.sh
+        sudo /tmp/powerline-fonts/install.sh
         rm -rf /tmp/powerline-fonts
 
         # install texpander and dependencies
