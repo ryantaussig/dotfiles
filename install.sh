@@ -6,13 +6,14 @@
 #
 # abstract:
 #   The following script installs dotfiles and applications interactively. It is intended for Ubuntu/Debian systems.
+#   NOTE: applications and options are installed *globally*.
 ########
 
 set -euo pipefail
 
 # install settings
 DOTFILES_DIR=$HOME/dotfiles
-OLD_DIR=$HOME/tmp/dotfiles_old
+OLD_DIR=/var/tmp/dotfiles_old
 DOTFILES="
 vimrc
 bashrc
@@ -31,8 +32,10 @@ for DOTFILE in $DOTFILES; do
     echo "Creating symlink to $DOTFILE in $HOME"
     ln -s $DOTFILES_DIR/$DOTFILE $HOME/.$DOTFILE
 done
+echo "Dotfile installation complete. Backups of the originals are located in $OLD_DIR."
 popd
 
+#TODO: add a switch to allow installing with various package managers
 # update package index prior to application installs
 echo "Updating package index."
 sudo apt update
@@ -60,15 +63,15 @@ while true; do
 
         # install general packages
         sudo apt install -y gnome-terminal pandoc cmus ripit mpv youtube-dl dict dict-* vlc libreoffice gnome-tweaks python3 python3-pip
-        pip3 install mkdocs mkdocs-material pygments
 
         # install work stuff
         sudo apt install -y google-cloud-sdk kubectl docker.io php composer nodejs npm certbot openssl mysql-workbench zstd snapd
-        pip3 install phpserialize mysql-connector-python google-cloud-storage awscli
         sudo snap install -y slack --classic
-        # sanity check to ensure ~/.local/bin exists
-        mkdir -p $HOME/.local/bin
-        wget https://dl.google.com/cloudsql/cloud_sql_proxy.linux.amd64 -O $HOME/.local/bin/cloud_sql_proxy
+        wget https://dl.google.com/cloudsql/cloud_sql_proxy.linux.amd64 -O /usr/local/bin/cloud_sql_proxy
+
+        # optional stuff not available through apt/snap
+        # it is preferable to install these in a venv on a per-project basis
+        #sudo -H pip3 install mkdocs mkdocs-material pygments phpserialize mysql-connector-python google-cloud-storage awscli
 
         # install chrome manually
         export GCLOUD_SDK_REPO="cloud-sdk-$(lsb_release -c -s)"
@@ -78,31 +81,28 @@ while true; do
         sudo dpkg -i google-chrome-stable_current_amd64.deb
         rm google-chrome-stable_current_amd64.deb
 
-        echo "Creating ~/src."
-        mkdir -p $HOME/src
-
         # install vim addons using vim 8's built-in package management and create symlinks in ~/.vim for easy upgrade management
         echo "Installing vim addons."
-        git clone http://github.com/morhetz/gruvbox $HOME/src/gruvbox
-        git clone http://github.com/vim-airline/vim-airline $HOME/src/vim-airline
-        git clone http://github.com/tpope/vim-fugitive $HOME/src/vim-fugitive
+        git clone http://github.com/morhetz/gruvbox /usr/local/src/gruvbox
+        git clone http://github.com/vim-airline/vim-airline /usr/local/src/vim-airline
+        git clone http://github.com/tpope/vim-fugitive /usr/local/src/vim-fugitive
         mkdir -p $HOME/.vim/pack/addons/{start,opt}/
-        ln -s $HOME/src/gruvbox $HOME/.vim/pack/addons/start/gruvbox
-        ln -s $HOME/src/vim-airline $HOME/.vim/pack/addons/start/vim-airline
-        ln -s $HOME/src/vim-fugitive $HOME/.vim/pack/addons/start/vim-fugitive
+        ln -s /usr/local/src/gruvbox $HOME/.vim/pack/addons/start/gruvbox
+        ln -s /usr/local/src/vim-airline $HOME/.vim/pack/addons/start/vim-airline
+        ln -s /usr/local/src/vim-fugitive $HOME/.vim/pack/addons/start/vim-fugitive
 
         # install fonts patched with powerline symbols (required for terminal themes and vim/tmux addons)
         echo "Installing powerline fonts."
-        # sanity check to make sure ~/tmp exists
-        mkdir -p $HOME/tmp
-        git clone https://github.com/powerline/fonts $HOME/tmp/powerline-fonts
-        $HOME/tmp/powerline-fonts/install.sh
-        rm -rf $HOME/tmp/powerline-fonts
+        git clone https://github.com/powerline/fonts /tmp/powerline-fonts
+        # change powerline's install script to install globally
+        sed -i 's/$HOME\/.local/\/usr\/local/g' /tmp/powerline-fonts/install.sh
+        /tmp/powerline-fonts/install.sh
+        rm -rf /tmp/powerline-fonts
 
         # install texpander and dependencies
         echo "Installing Texpander. NOTE: Remember to add a keyboard shortcut."
         sudo apt install -y xsel xdotool zenity
-        git clone https://github.com/leehblue/texpander $HOME/src/texpander
+        git clone https://github.com/leehblue/texpander /usr/local/src/texpander
         mkdir $HOME/.texpander
 
         echo "Importing gnome terminal themes."

@@ -69,7 +69,7 @@ set incsearch
 set hlsearch
 
 " fancy unicode list characters
-set listchars=tab:►\ ,trail:◊,eol:¶,extends:…,precedes:…,conceal:●,nbsp:␣
+set listchars=tab:►\ ,trail:◊,eol:↵,extends:…,precedes:…,conceal:●,nbsp:␣
 
 """"""""
 " 3. custom keybindings
