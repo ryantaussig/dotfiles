@@ -80,5 +80,5 @@ dict-gcide-and-wordnet() {
 alias dicten=dict-gcide-and-wordnet
 
 # Custom 256 color palette for gruvbox
-source "$HOME/src/gruvbox/gruvbox_256palette.sh"
+source "/usr/local/src/gruvbox/gruvbox_256palette.sh"
 
