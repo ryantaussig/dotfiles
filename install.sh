@@ -45,7 +45,7 @@ while true; do
     read -rp "Do you wish to install the headless/server applications? (y/n): " CLI
     if [[ "$CLI" == "y" ]]; then
         echo "Installing..."
-        sudo apt install -y vim-nox tmux git ssh tree lnav peco tig ranger ncdu htop wget w3m w3m-img iperf mycli
+        sudo apt install -y vim-nox tmux git ssh tree lnav peco tig ranger ncdu htop curl wget w3m w3m-img iperf mycli
     elif [[ "$CLI" == "n" ]]; then
         echo "Skipping..."
     else
@@ -65,9 +65,11 @@ while true; do
         sudo apt install -y gnome-terminal pandoc cmus ripit mpv youtube-dl dict dict-* vlc libreoffice gnome-tweaks python3 python3-pip vim-gui-common
 
         # install work stuff
-        sudo apt install -y google-cloud-sdk kubectl docker.io certbot openssl mysql-workbench zstd snapd
-        sudo snap install -y slack --classic
-        wget https://dl.google.com/cloudsql/cloud_sql_proxy.linux.amd64 -O /usr/local/bin/cloud_sql_proxy
+        sudo apt install -y docker.io certbot openssl mysql-workbench zstd snapd
+        sudo snap install slack --classic
+        sudo snap install google-cloud-sdk --classic
+        sudo snap install kubectl --classic
+        sudo wget https://dl.google.com/cloudsql/cloud_sql_proxy.linux.amd64 -O /usr/local/bin/cloud_sql_proxy
 
         # optional stuff
         #sudo apt install -y php composer nodejs npm
@@ -103,7 +105,7 @@ while true; do
         # install texpander and dependencies
         echo "Installing Texpander. NOTE: Remember to add a keyboard shortcut."
         sudo apt install -y xsel xdotool zenity
-        git clone https://github.com/leehblue/texpander /usr/local/src/texpander
+        sudo git clone https://github.com/leehblue/texpander /usr/local/src/texpander
         mkdir $HOME/.texpander
 
         echo "Importing gnome terminal themes."
