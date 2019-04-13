@@ -67,19 +67,22 @@ while true; do
         # install work stuff
         sudo apt install -y docker.io certbot openssl mysql-workbench zstd snapd
         sudo snap install slack --classic
-        sudo snap install google-cloud-sdk --classic
-        sudo snap install kubectl --classic
+        export CLOUD_SDK_REPO="cloud-sdk-$(lsb_release -c -s)"
+        echo "deb http://packages.cloud.google.com/apt $CLOUD_SDK_REPO main" | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
+        curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
+        sudo apt-get update && sudo apt-get install google-cloud-sdk kubectl
         sudo wget https://dl.google.com/cloudsql/cloud_sql_proxy.linux.amd64 -O /usr/local/bin/cloud_sql_proxy
 
-        # optional stuff
+        # optional packages
+        ## programming:
         #sudo apt install -y php composer nodejs npm
-        # pip packages. it is better practice to install these in a venv on a per-project basis
+        ## pip (it is better practice to install these in a venv on a per-project basis):
         #sudo -H pip3 install mkdocs mkdocs-material pygments phpserialize mysql-connector-python google-cloud-storage awscli
 
+        # enable thinkpad battery features:
+        sudo apt install tlp powerstat tp-smapi-dkms acpi-call-dkms
+
         # install chrome manually
-        export GCLOUD_SDK_REPO="cloud-sdk-$(lsb_release -c -s)"
-        echo "deb http://packages.cloud.google.com/apt $GCLOUD_SDK_REPO main" | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
-        curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
         wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
         sudo dpkg -i google-chrome-stable_current_amd64.deb
         rm google-chrome-stable_current_amd64.deb
