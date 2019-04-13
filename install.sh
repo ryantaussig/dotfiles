@@ -80,7 +80,7 @@ while true; do
         #sudo -H pip3 install mkdocs mkdocs-material pygments phpserialize mysql-connector-python google-cloud-storage awscli
 
         # enable thinkpad battery features:
-        sudo apt install tlp powerstat tp-smapi-dkms acpi-call-dkms
+        sudo apt install tlp powerstat acpi-call-dkms
 
         # install chrome manually
         wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
