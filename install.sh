@@ -62,7 +62,7 @@ while true; do
         echo "Installing..."
 
         # install general packages
-        sudo apt install -y gnome-terminal pandoc cmus ripit mpv youtube-dl dict dict-* vlc libreoffice gnome-tweaks python3 python3-pip vim-gui-common
+        sudo apt install -y gnome-terminal pandoc cmus ripit mpv youtube-dl dict dict-* vlc libreoffice gnome-tweaks python3 python3-pip vim-gui-common pavucontrol
 
         # install work stuff
         sudo apt install -y docker.io certbot openssl mysql-workbench zstd snapd
@@ -70,7 +70,7 @@ while true; do
         export CLOUD_SDK_REPO="cloud-sdk-$(lsb_release -c -s)"
         echo "deb http://packages.cloud.google.com/apt $CLOUD_SDK_REPO main" | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
         curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
-        sudo apt-get update && sudo apt-get install google-cloud-sdk kubectl
+        sudo apt-get update && sudo apt-get install -y google-cloud-sdk kubectl
         sudo wget https://dl.google.com/cloudsql/cloud_sql_proxy.linux.amd64 -O /usr/local/bin/cloud_sql_proxy
 
         # optional packages
@@ -79,8 +79,8 @@ while true; do
         ## pip (it is better practice to install these in a venv on a per-project basis):
         #sudo -H pip3 install mkdocs mkdocs-material pygments phpserialize mysql-connector-python google-cloud-storage awscli
 
-        # enable thinkpad battery features:
-        sudo apt install tlp powerstat acpi-call-dkms
+        # enable thinkpad battery features and temperature monitoring:
+        sudo apt install tlp powerstat acpi-call-dkms psensor
 
         # install chrome manually
         wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
