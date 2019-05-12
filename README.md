@@ -1,9 +1,6 @@
 # README
 
-| Author       | Ryan Taussig |
-| ------------ | ------------ |
-| Last updated | 2019-03-14   |
-
+This dotfiles repository contains settings for Debian/Ubuntu-based Linux systems.
 
 ## Installation
 

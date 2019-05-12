@@ -18,6 +18,7 @@ DOTFILES="
 vimrc
 bashrc
 tmux.conf
+profile
 "
 
 # install dotfile symlinks
@@ -62,7 +63,8 @@ while true; do
         echo "Installing..."
 
         # install general packages
-        sudo apt install -y gnome-terminal pandoc cmus ripit mpv youtube-dl dict dict-* vlc libreoffice gnome-tweaks python3 python3-pip vim-gui-common pavucontrol
+        sudo apt install -y gnome-terminal pandoc cmus ripit mpv youtube-dl dict dict-* vlc libreoffice gnome-tweaks vim-gui-common pavucontrol
+        sudo snap install skype --classic
 
         # install work stuff
         sudo apt install -y docker.io certbot openssl mysql-workbench zstd snapd
@@ -73,10 +75,9 @@ while true; do
         sudo apt-get update && sudo apt-get install -y google-cloud-sdk kubectl
         sudo wget https://dl.google.com/cloudsql/cloud_sql_proxy.linux.amd64 -O /usr/local/bin/cloud_sql_proxy
 
-        # optional packages
-        ## programming:
-        #sudo apt install -y php composer nodejs npm
-        ## pip (it is better practice to install these in a venv on a per-project basis):
+        # basic dev packages
+        sudo apt install -y golang php composer nodejs npm python3 python3-pip
+        # it's better practice to install pip packages in a virtual environment on a per-project basis. uncomment to install globally.
         #sudo -H pip3 install mkdocs mkdocs-material pygments phpserialize mysql-connector-python google-cloud-storage awscli
 
         # enable thinkpad battery features and temperature monitoring:
