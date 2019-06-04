@@ -8,7 +8,7 @@
 "   3. custom keybindings
 "   4. colors and fonts
 "   5. netrw tweaks
-"   6. python-specific
+"   6. language-specific
 "   7. addons
 """"""""
 
@@ -41,11 +41,8 @@ set noerrorbells visualbell t_vb=
 " set command line height
 set cmdheight=1
 
-" set new tabs to insert 4 individual space characters but keep hard tab at 8 for compatibility with legacy documents
-set tabstop=8
-set softtabstop=4
-set shiftwidth=4
-set expandtab
+" enable indentation 
+set autoindent smartindent
 
 " visual autocomplete
 set wildmenu
@@ -115,19 +112,21 @@ let g:netrw_altv = 1
 let g:netrw_winsize = 25
 
 """"""""
-" 6. python-specific
+" 6. language-specific
 """"""""
 
-" use all python highlighting
+" go
+autocmd filetype go set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab
+
+" php
+autocmd filetype php set tabstop=8 softtabstop=4 shiftwidth=4 expandtab
+
+" bash
+autocmd filetype sh set tabstop=8 softtabstop=8 shiftwidth=8 noexpandtab
+
+" python
+autocmd filetype py set tabstop=8 softtabstop=4 shiftwidth=4 expandtab
 autocmd filetype py let python_highlight_all = 1
-
-" enable auto indentation
-autocmd filetype py set autoindent
-
-" enable smart indentation
-autocmd filetype py set smartindent
-
-" set textwidth to meet pep-8 standards
 autocmd filetype py textwidth=79
 
 """"""""

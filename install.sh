@@ -12,14 +12,16 @@
 set -euo pipefail
 
 # install settings
-DOTFILES_DIR=$HOME/dotfiles
-OLD_DIR=/var/tmp/dotfiles_old
+DOTFILES_DIR="$HOME/dotfiles"
+OLD_DIR="/var/tmp/dotfiles_old"
 DOTFILES="
 vimrc
 bashrc
 tmux.conf
 profile
 "
+GOVERSION="1.11.5"
+GOARCH="linux-amd64"
 
 # install dotfile symlinks
 echo "Installing dotfile symlinks."
@@ -63,11 +65,11 @@ while true; do
         echo "Installing..."
 
         # install general packages
-        sudo apt install -y gnome-terminal pandoc cmus ripit mpv youtube-dl dict dict-* vlc libreoffice gnome-tweaks vim-gui-common pavucontrol
+        sudo apt install -y gnome-terminal pandoc cmus ripit mpv youtube-dl dict dict-* vlc libreoffice gnome-tweaks vim-gui-common pavucontrol snapd
         sudo snap install skype --classic
 
         # install work stuff
-        sudo apt install -y docker.io certbot openssl mysql-workbench zstd snapd
+        sudo apt install -y docker.io certbot openssl mysql-workbench zstd python3-phpserialize python3-mysql.connector
         sudo snap install slack --classic
         export CLOUD_SDK_REPO="cloud-sdk-$(lsb_release -c -s)"
         echo "deb http://packages.cloud.google.com/apt $CLOUD_SDK_REPO main" | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
@@ -76,12 +78,15 @@ while true; do
         sudo wget https://dl.google.com/cloudsql/cloud_sql_proxy.linux.amd64 -O /usr/local/bin/cloud_sql_proxy
 
         # basic dev packages
-        sudo apt install -y golang php composer nodejs npm python3 python3-pip
-        # it's better practice to install pip packages in a virtual environment on a per-project basis. uncomment to install globally.
-        #sudo -H pip3 install mkdocs mkdocs-material pygments phpserialize mysql-connector-python google-cloud-storage awscli
+        sudo apt install -y php composer python3 python3-pip
+
+	# install golang manually using specified version and architecture
+	wget https://golang.org/dl/go$GOVERSION.$GOARCH.tar.gz
+	sudo mkdir -p /usr/local/go
+	sudo tar -xvf go$GOVERSION.$GOARCH.tar.gz -C /usr/local/go --strip-components=1
 
         # enable thinkpad battery features and temperature monitoring:
-        sudo apt install tlp powerstat acpi-call-dkms psensor
+        sudo apt install tlp powerstat acpi-call-dkms psensor #acpi-call may no longer be needed
 
         # install chrome manually
         wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
@@ -126,6 +131,9 @@ done
 ########
 # other (misc. applications, not currently needed, explore at a later date)
 ########
+
+## docs
+#pip3 install mkdocs mkdocs-material
 
 ## ham radio
 #sudo apt install -y chirp hamradio* ax25-applications ax25-applications ax25-xapplications ax25mail-utils gnuradio gnuradio-dev gnuradio-doc direwolf direwolf-docs

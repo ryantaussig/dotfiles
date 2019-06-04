@@ -26,8 +26,10 @@ if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
 
-# set PATH to include GOBIN if it exists
-if [ -d "$HOME/go/bin" ] ; then
-    PATH="$HOME/go/bin:$PATH"
+# if golang in installed, set GOROOT/GOPATH and add their bins to PATH
+if [ -d "/usr/local/go/" ] ; then
+    GOROOT="/usr/local/go"
+    GOPATH="$HOME/go"
+    PATH="$PATH:$GOROOT/bin:$GOPATH/bin"
 fi
 
