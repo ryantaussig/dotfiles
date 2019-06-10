@@ -78,7 +78,7 @@ while true; do
 		sudo apt update && sudo apt install -y chromium-browser
 
 		# install work stuff
-		sudo apt install -y docker.io certbot openssl mysql-workbench zstd php composer python3 python3-phpserialize python3-mysql.connector nodejs npm
+		sudo apt install -y docker.io certbot openssl zstd php composer python3 python3-phpserialize python3-mysql.connector nodejs npm
 		sudo snap install google-cloud-sdk --classic
 		sudo snap install kubectl --classic
 		sudo snap install aws-cli --classic
@@ -127,6 +127,8 @@ while true; do
 	fi
 	break
 done
+
+echo SUCCESS
 
 ########
 # other (misc. applications, not currently needed, explore at a later date)
