@@ -13,7 +13,7 @@ set -euo pipefail
 
 # install settings
 DOTFILES_DIR="$HOME/dotfiles"
-OLD_DIR="/var/tmp/dotfiles_old"
+OLD_DIR="$HOME/dotfiles_old"
 DOTFILES="
 vimrc
 bashrc
@@ -77,11 +77,6 @@ while true; do
 		sudo add-apt-repository ppa:saiarcot895/chromium-dev
 		sudo apt update && sudo apt install -y chromium-browser
 
-		## download and install chrome package
-		#wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-		#sudo dpkg -i google-chrome-stable_current_amd64.deb
-		#rm google-chrome-stable_current_amd64.deb
-
 		# install work stuff
 		sudo apt install -y docker.io certbot openssl mysql-workbench zstd php composer python3 python3-phpserialize python3-mysql.connector nodejs npm
 		sudo snap install google-cloud-sdk --classic
@@ -90,9 +85,10 @@ while true; do
 		sudo wget https://dl.google.com/cloudsql/cloud_sql_proxy.linux.amd64 -O /usr/local/bin/cloud_sql_proxy
 
 		# install golang manually using specified version and architecture
-		wget https://golang.org/dl/go$GOVERSION.$GOARCH.tar.gz
+		wget https://golang.org/dl/go$GOVERSION.$GOARCH.tar.gz -O /tmp/go$GOVERSION.$GOARCH.tar.gz
 		sudo mkdir -p /usr/local/go
-		sudo tar -xvzf go$GOVERSION.$GOARCH.tar.gz -C /usr/local/go --strip-components=1
+		sudo tar -xvzf /tmp/go$GOVERSION.$GOARCH.tar.gz -C /usr/local/go --strip-components=1
+		rm /tmp/go$GOVERSION.$GOARCH.tar.gz
 
 		# enable thinkpad battery features and temperature monitoring:
 		sudo apt install tlp powerstat acpi-call-dkms psensor # acpi-call may no longer be needed in future kernel versions
