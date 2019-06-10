@@ -41,7 +41,7 @@ set noerrorbells visualbell t_vb=
 " set command line height
 set cmdheight=1
 
-" enable indentation 
+" enable indentation
 set autoindent smartindent
 
 " visual autocomplete
@@ -115,11 +115,15 @@ let g:netrw_winsize = 25
 " 6. language-specific
 """"""""
 
-" go
+" golang
 autocmd filetype go set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab
 
 " php
 autocmd filetype php set tabstop=8 softtabstop=4 shiftwidth=4 expandtab
+
+" typescript/javascript
+autocmd filetype js set tabstop=8 softtabstop=2 shiftwidth=2 expandtab
+autocmd filetype ts set tabstop=8 softtabstop=2 shiftwidth=2 expandtab
 
 " bash
 autocmd filetype sh set tabstop=8 softtabstop=8 shiftwidth=8 noexpandtab

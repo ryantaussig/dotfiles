@@ -8,28 +8,32 @@
 # for ssh logins, install and configure the libpam-umask package.
 #umask 022
 
-# if running bash
+# if this is bash, check for and include .bashrc
 if [ -n "$BASH_VERSION" ]; then
-    # include .bashrc if it exists
-    if [ -f "$HOME/.bashrc" ]; then
-	. "$HOME/.bashrc"
-    fi
+	if [ -f "$HOME/.bashrc" ]; then
+		. "$HOME/.bashrc"
+	fi
 fi
 
-# set PATH so it includes user's private bin if it exists
-if [ -d "$HOME/bin" ] ; then
-    PATH="$HOME/bin:$PATH"
+# TMUX runs login shells creating duplicate entries in $PATH, so check if $TMUX is set first.
+if [ -z "$TMUX" ]; then
+	# add user's private bins to $PATH if they exist
+	if [ -d "$HOME/bin" ] ; then
+		PATH="$HOME/bin:$PATH"
+	fi
+	if [ -d "$HOME/.local/bin" ] ; then
+		PATH="$HOME/.local/bin:$PATH"
+	fi
+
+	# if golang in installed, set GOROOT/GOPATH and add the associated bins to $PATH
+	if [ -d "/usr/local/go/" ] ; then
+		GOROOT="/usr/local/go"
+		GOPATH="$HOME/go"
+		PATH="$PATH:$GOROOT/bin:$GOPATH/bin"
+	fi
 fi
 
-# set PATH so it includes user's private bin if it exists
-if [ -d "$HOME/.local/bin" ] ; then
-    PATH="$HOME/.local/bin:$PATH"
-fi
-
-# if golang in installed, set GOROOT/GOPATH and add their bins to PATH
-if [ -d "/usr/local/go/" ] ; then
-    GOROOT="/usr/local/go"
-    GOPATH="$HOME/go"
-    PATH="$PATH:$GOROOT/bin:$GOPATH/bin"
-fi
-
+# disable chromium warning about api keys
+GOOGLE_API_KEY=""
+GOOGLE_DEFAULT_CLIENT_ID=""
+GOOGLE_DEFAULT_CLIENT_SECRET=""

@@ -68,8 +68,7 @@ alias l='ls -CF'
 
 # Quick update and upgrade
 update-and-upgrade() {
-    sudo apt update
-    sudo apt upgrade
+    sudo apt update && sudo apt upgrade -y && sudo snap refresh
 }
 alias uu=update-and-upgrade
 

@@ -20,7 +20,7 @@ bashrc
 tmux.conf
 profile
 "
-GOVERSION="1.11.5"
+GOVERSION="1.12.5"
 GOARCH="linux-amd64"
 
 # install dotfile symlinks
@@ -28,104 +28,108 @@ echo "Installing dotfile symlinks."
 mkdir -p $OLD_DIR
 pushd $DOTFILES_DIR
 for DOTFILE in $DOTFILES; do
-    if [[ -f "$HOME/.$DOTFILE" ]]; then
-        echo "Moving existing $DOTFILE to $OLD_DIR"
-        mv $HOME/.$DOTFILE $OLD_DIR
-    fi
-    echo "Creating symlink to $DOTFILE in $HOME"
-    ln -s $DOTFILES_DIR/$DOTFILE $HOME/.$DOTFILE
+	if [[ -f "$HOME/.$DOTFILE" ]]; then
+		echo "Moving existing $DOTFILE to $OLD_DIR"
+		mv $HOME/.$DOTFILE $OLD_DIR
+	fi
+	echo "Creating symlink to $DOTFILE in $HOME"
+	ln -s $DOTFILES_DIR/$DOTFILE $HOME/.$DOTFILE
 done
 echo "Dotfile installation complete. Backups of the originals are located in $OLD_DIR."
 popd
 
-#TODO: add a switch to allow installing with various package managers
+# TODO: add a switch to allow installing with various package managers
 # update package index prior to application installs
 echo "Updating package index."
 sudo apt update
 
 # headless applications/utilities
 while true; do
-    read -rp "Do you wish to install the headless/server applications? (y/n): " CLI
-    if [[ "$CLI" == "y" ]]; then
-        echo "Installing..."
-        sudo apt install -y vim-nox tmux git ssh tree lnav peco tig ranger ncdu htop curl wget w3m w3m-img iperf mycli
-    elif [[ "$CLI" == "n" ]]; then
-        echo "Skipping..."
-    else
-        echo "Please respond y or n."
-        continue
-    fi
-    break
+	read -rp "Do you wish to install the headless/server applications? (y/n): " CLI
+	if [[ "$CLI" == "y" ]]; then
+		echo "Installing..."
+		sudo apt install -y vim-nox tmux git ssh tree lnav peco tig ranger ncdu htop curl wget w3m w3m-img iperf mycli
+	elif [[ "$CLI" == "n" ]]; then
+		echo "Skipping..."
+	else
+		echo "Please respond y or n."
+		continue
+	fi
+	break
 done
 
 # workstation applications
 while true; do
-    read -rp "Do you wish to install the GUI/workstation applications and settings? (y/n): " GUI
-    if [[ "$GUI" == "y" ]]; then
-        echo "Installing..."
+	read -rp "Do you wish to install the GUI/workstation applications and settings? (y/n): " GUI
+	if [[ "$GUI" == "y" ]]; then
+		echo "Installing..."
 
-        # install general packages
-        sudo apt install -y gnome-terminal pandoc cmus ripit mpv youtube-dl dict dict-* vlc libreoffice gnome-tweaks vim-gui-common pavucontrol snapd
-        sudo snap install skype --classic
+		# install general packages
+		sudo apt install -y gnome-terminal pandoc cmus ripit mpv youtube-dl dict dict-* vlc libreoffice gnome-tweaks vim-gui-common pavucontrol snapd
 
-        # install work stuff
-        sudo apt install -y docker.io certbot openssl mysql-workbench zstd python3-phpserialize python3-mysql.connector
-        sudo snap install slack --classic
-        export CLOUD_SDK_REPO="cloud-sdk-$(lsb_release -c -s)"
-        echo "deb http://packages.cloud.google.com/apt $CLOUD_SDK_REPO main" | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
-        curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
-        sudo apt-get update && sudo apt-get install -y google-cloud-sdk kubectl
-        sudo wget https://dl.google.com/cloudsql/cloud_sql_proxy.linux.amd64 -O /usr/local/bin/cloud_sql_proxy
+		# install chat clients
+		sudo snap install discord
+		sudo snap install slack --classic
+		sudo snap install skype --classic
 
-        # basic dev packages
-        sudo apt install -y php composer python3 python3-pip
+		# install VA-API enabled chromium (enabled via chrome://flags)
+		# NOTE: currently won't work with some DRM sites like netflix---use firefox in those cases
+		sudo add-apt-repository ppa:saiarcot895/chromium-dev
+		sudo apt update && sudo apt install -y chromium-browser
 
-	# install golang manually using specified version and architecture
-	wget https://golang.org/dl/go$GOVERSION.$GOARCH.tar.gz
-	sudo mkdir -p /usr/local/go
-	sudo tar -xvf go$GOVERSION.$GOARCH.tar.gz -C /usr/local/go --strip-components=1
+		## download and install chrome package
+		#wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+		#sudo dpkg -i google-chrome-stable_current_amd64.deb
+		#rm google-chrome-stable_current_amd64.deb
 
-        # enable thinkpad battery features and temperature monitoring:
-        sudo apt install tlp powerstat acpi-call-dkms psensor #acpi-call may no longer be needed
+		# install work stuff
+		sudo apt install -y docker.io certbot openssl mysql-workbench zstd php composer python3 python3-phpserialize python3-mysql.connector nodejs npm
+		sudo snap install google-cloud-sdk --classic
+		sudo snap install kubectl --classic
+		sudo snap install aws-cli --classic
+		sudo wget https://dl.google.com/cloudsql/cloud_sql_proxy.linux.amd64 -O /usr/local/bin/cloud_sql_proxy
 
-        # install chrome manually
-        wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-        sudo dpkg -i google-chrome-stable_current_amd64.deb
-        rm google-chrome-stable_current_amd64.deb
+		# install golang manually using specified version and architecture
+		wget https://golang.org/dl/go$GOVERSION.$GOARCH.tar.gz
+		sudo mkdir -p /usr/local/go
+		sudo tar -xvzf go$GOVERSION.$GOARCH.tar.gz -C /usr/local/go --strip-components=1
 
-        # install vim addons using vim 8's built-in package management and create symlinks in ~/.vim for easy upgrade management
-        echo "Installing vim addons."
-        sudo git clone https://github.com/morhetz/gruvbox /usr/local/src/gruvbox
-        sudo git clone https://github.com/vim-airline/vim-airline /usr/local/src/vim-airline
-        sudo git clone https://github.com/tpope/vim-fugitive /usr/local/src/vim-fugitive
-        mkdir -p $HOME/.vim/pack/addons/{start,opt}/
-        ln -s /usr/local/src/gruvbox $HOME/.vim/pack/addons/start/gruvbox
-        ln -s /usr/local/src/vim-airline $HOME/.vim/pack/addons/start/vim-airline
-        ln -s /usr/local/src/vim-fugitive $HOME/.vim/pack/addons/start/vim-fugitive
+		# enable thinkpad battery features and temperature monitoring:
+		sudo apt install tlp powerstat acpi-call-dkms psensor # acpi-call may no longer be needed in future kernel versions
 
-        # install fonts patched with powerline symbols (required for terminal themes and vim/tmux addons)
-        echo "Installing powerline fonts."
-        git clone https://github.com/powerline/fonts /tmp/powerline-fonts
-        # change powerline's install script to install globally
-        sed -i 's/$HOME\/.local/\/usr\/local/g' /tmp/powerline-fonts/install.sh
-        sudo /tmp/powerline-fonts/install.sh
-        rm -rf /tmp/powerline-fonts
+		# install vim addons using vim 8's built-in package management and create symlinks in ~/.vim for easy upgrade management
+		echo "Installing vim addons."
+		sudo git clone https://github.com/morhetz/gruvbox /usr/local/src/gruvbox
+		sudo git clone https://github.com/vim-airline/vim-airline /usr/local/src/vim-airline
+		sudo git clone https://github.com/tpope/vim-fugitive /usr/local/src/vim-fugitive
+		mkdir -p $HOME/.vim/pack/addons/{start,opt}/
+		ln -s /usr/local/src/gruvbox $HOME/.vim/pack/addons/start/gruvbox
+		ln -s /usr/local/src/vim-airline $HOME/.vim/pack/addons/start/vim-airline
+		ln -s /usr/local/src/vim-fugitive $HOME/.vim/pack/addons/start/vim-fugitive
 
-        # install texpander and dependencies
-        echo "Installing Texpander. NOTE: Remember to add a keyboard shortcut."
-        sudo apt install -y xsel xdotool zenity
-        sudo git clone https://github.com/leehblue/texpander /usr/local/src/texpander
-        mkdir $HOME/.texpander
+		# install fonts patched with powerline symbols (required for terminal themes and vim/tmux addons)
+		echo "Installing powerline fonts."
+		git clone https://github.com/powerline/fonts /tmp/powerline-fonts
+		# change powerline's install script to install globally
+		sed -i 's/$HOME\/.local/\/usr\/local/g' /tmp/powerline-fonts/install.sh
+		sudo /tmp/powerline-fonts/install.sh
+		rm -rf /tmp/powerline-fonts
 
-        echo "Importing gnome terminal themes."
-        dconf load /org/gnome/terminal/ < $DOTFILES_DIR/org-gnome-terminal.dconf
-    elif [[ "$GUI" == "n" ]]; then
-        echo "Skipping..."
-    else
-        echo "Please respond y or n."
-        continue
-    fi
-    break
+		# install texpander and dependencies
+		echo "Installing Texpander. NOTE: Remember to add a keyboard shortcut."
+		sudo apt install -y xsel xdotool zenity
+		sudo git clone https://github.com/leehblue/texpander /usr/local/src/texpander
+		mkdir $HOME/.texpander
+
+		echo "Importing gnome terminal themes."
+		dconf load /org/gnome/terminal/ < $DOTFILES_DIR/org-gnome-terminal.dconf
+	elif [[ "$GUI" == "n" ]]; then
+		echo "Skipping..."
+	else
+		echo "Please respond y or n."
+		continue
+	fi
+	break
 done
 
 ########
