@@ -1,0 +1,2 @@
+# change cursorline to black on green because default white on green lacks contrast in gruvbox
+color cursor black green bold

@@ -31,6 +31,11 @@ if [ -z "$TMUX" ]; then
 		GOPATH="$HOME/go"
 		PATH="$PATH:$GOROOT/bin:$GOPATH/bin"
 	fi
+
+	# add private global composer bin to $PATH if it exists
+	if [ -d "$HOME/.config/composer/vendor/bin" ] ; then
+		PATH="$PATH:$HOME/.config/composer/vendor/bin"
+	fi
 fi
 
 # disable chromium warning about api keys

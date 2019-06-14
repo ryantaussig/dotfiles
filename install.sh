@@ -19,6 +19,7 @@ vimrc
 bashrc
 tmux.conf
 profile
+tigrc
 "
 GOVERSION="1.12.5"
 GOARCH="linux-amd64"
@@ -72,10 +73,10 @@ while true; do
 		sudo snap install slack --classic
 		sudo snap install skype --classic
 
-		# install VA-API enabled chromium (enabled via chrome://flags)
+		# install VA-API enabled chromium and drivers (enabled via chrome://flags)
 		# NOTE: currently won't work with some DRM sites like netflix---use firefox in those cases
 		sudo add-apt-repository ppa:saiarcot895/chromium-dev
-		sudo apt update && sudo apt install -y chromium-browser
+		sudo apt update && sudo apt install -y chromium-browser i965-va-driver
 
 		# install work stuff
 		sudo apt install -y docker.io certbot openssl zstd php composer python3 python3-phpserialize python3-mysql.connector nodejs npm
