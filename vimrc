@@ -133,6 +133,10 @@ autocmd filetype py set tabstop=8 softtabstop=4 shiftwidth=4 expandtab
 autocmd filetype py let python_highlight_all = 1
 autocmd filetype py textwidth=79
 
+" html/xml
+autocmd filetype html set tabstop=8 softtabstop=2 shiftwidth=2 expandtab
+autocmd filetype xml set tabstop=8 softtabstop=2 shiftwidth=2 expandtab
+
 """"""""
 " 7. addons
 """"""""

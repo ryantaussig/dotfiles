@@ -66,7 +66,7 @@ while true; do
 		echo "Installing..."
 
 		# install general packages
-		sudo apt install -y gnome-terminal pandoc cmus ripit mpv youtube-dl dict dict-* vlc libreoffice gnome-tweaks vim-gui-common pavucontrol snapd
+		sudo apt install -y gnome-terminal pandoc cmark-gfm cmus ripit mpv youtube-dl dict dict-* vlc libreoffice gnome-tweaks vim-gui-common pavucontrol snapd
 
 		# install chat clients
 		sudo snap install discord
