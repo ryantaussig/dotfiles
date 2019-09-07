@@ -17,28 +17,19 @@ fi
 
 # TMUX runs login shells creating duplicate entries in $PATH, so check if $TMUX is set first.
 if [ -z "$TMUX" ]; then
-	# add user's private bins to $PATH if they exist
-	if [ -d "$HOME/bin" ] ; then
-		PATH="$HOME/bin:$PATH"
-	fi
+	# add user's private bin to $PATH if it exists
 	if [ -d "$HOME/.local/bin" ] ; then
 		PATH="$HOME/.local/bin:$PATH"
 	fi
 
-	# if golang in installed, set GOROOT/GOPATH and add the associated bins to $PATH
-	if [ -d "/usr/local/go/" ] ; then
-		GOROOT="/usr/local/go"
-		GOPATH="$HOME/go"
-		PATH="$PATH:$GOROOT/bin:$GOPATH/bin"
+	# add user's cargo bin to $PATH if it exists
+	if [ -d "$HOME/.cargo/bin" ] ; then
+		PATH="$PATH:$HOME/.cargo/bin"
 	fi
 
-	# add private global composer bin to $PATH if it exists
+	# add user's global composer bin to $PATH if it exists
 	if [ -d "$HOME/.config/composer/vendor/bin" ] ; then
 		PATH="$PATH:$HOME/.config/composer/vendor/bin"
 	fi
 fi
 
-# disable chromium warning about api keys
-GOOGLE_API_KEY=""
-GOOGLE_DEFAULT_CLIENT_ID=""
-GOOGLE_DEFAULT_CLIENT_SECRET=""

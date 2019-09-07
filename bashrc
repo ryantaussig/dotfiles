@@ -66,17 +66,8 @@ alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 
-# Quick update and upgrade
-update-and-upgrade() {
-    sudo apt update && sudo apt upgrade -y && sudo snap refresh
-}
-alias uu=update-and-upgrade
-
-dict-gcide-and-wordnet() {
-    dict -d gcide $1
-    dict -d wn $1
-}
-alias dicten=dict-gcide-and-wordnet
+# aliases
+alias tree='exa -T'
 
 # Custom 256 color palette for gruvbox
 source "/usr/local/src/gruvbox/gruvbox_256palette.sh"

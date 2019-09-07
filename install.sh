@@ -5,15 +5,16 @@
 # license: MIT
 #
 # abstract:
-#   The following script installs dotfiles and applications interactively. It is intended for Ubuntu/Debian systems.
-#   NOTE: applications and options are installed *globally*.
+#   The following script installs dotfiles and applications interactively. It is intended for Ubuntu systems.
 ########
 
 set -euo pipefail
 
 # install settings
-DOTFILES_DIR="$HOME/dotfiles"
-OLD_DIR="$HOME/dotfiles_old"
+DOTFILES_DIR="$HOME/.local/dotfiles"
+OLD_DIR="$HOME/tmp/dotfiles_old"
+BIN_DIR="$HOME/.local/bin"
+VENDOR_DIR="$HOME/.local/vendor"
 DOTFILES="
 vimrc
 bashrc
@@ -21,8 +22,6 @@ tmux.conf
 profile
 tigrc
 "
-GOVERSION="1.12.5"
-GOARCH="linux-amd64"
 
 # install dotfile symlinks
 echo "Installing dotfile symlinks."
@@ -49,7 +48,7 @@ while true; do
 	read -rp "Do you wish to install the headless/server applications? (y/n): " CLI
 	if [[ "$CLI" == "y" ]]; then
 		echo "Installing..."
-		sudo apt install -y vim-nox tmux git ssh tree lnav peco tig ranger ncdu htop curl wget w3m w3m-img iperf mycli
+		sudo apt install -y vim-nox tmux git ssh exa lnav peco tig ranger ncdu htop curl wget w3m w3m-img iperf mycli
 	elif [[ "$CLI" == "n" ]]; then
 		echo "Skipping..."
 	else
@@ -65,8 +64,14 @@ while true; do
 	if [[ "$GUI" == "y" ]]; then
 		echo "Installing..."
 
+		mkdir -p $BIN_DIR
+		mkdir -p $VENDOR_DIR
+
+		# NOTE: rust installation is best managed using `rustup`, which will prompt the user for input during install, so let's do that first
+		curl https://sh.rustup.rs -sSf | sh
+
 		# install general packages
-		sudo apt install -y gnome-terminal pandoc cmark-gfm cmus ripit mpv youtube-dl dict dict-* vlc libreoffice gnome-tweaks vim-gui-common pavucontrol snapd
+		sudo apt install -y gnome-terminal pandoc cmus ripit mpv youtube-dl vlc libreoffice gnome-tweaks vim-gtk3 pavucontrol snapd
 
 		# install chat clients
 		sudo snap install discord
@@ -78,44 +83,45 @@ while true; do
 		sudo add-apt-repository ppa:saiarcot895/chromium-dev
 		sudo apt update && sudo apt install -y chromium-browser i965-va-driver
 
-		# install work stuff
-		sudo apt install -y docker.io certbot openssl zstd php composer python3 python3-phpserialize python3-mysql.connector nodejs npm
+		# install devops stuff
+		sudo apt install -y docker.io certbot openssl zstd php composer php-xml php-pear python3 python3-pip
+		pip3 install phpserialize
+		pip3 install mysql-connector-python
+		pip3 install mkdocs
+		pip3 install mkdocs-material
+		composer global require --dev phpstan/phpstan
+		composer global require --dev jakub-onderka/php-parallel-lint
+		composer global require --dev squizlabs/php_codesniffer
 		sudo snap install google-cloud-sdk --classic
 		sudo snap install kubectl --classic
 		sudo snap install aws-cli --classic
-		sudo wget https://dl.google.com/cloudsql/cloud_sql_proxy.linux.amd64 -O /usr/local/bin/cloud_sql_proxy
-
-		# install golang manually using specified version and architecture
-		wget https://golang.org/dl/go$GOVERSION.$GOARCH.tar.gz -O /tmp/go$GOVERSION.$GOARCH.tar.gz
-		sudo mkdir -p /usr/local/go
-		sudo tar -xvzf /tmp/go$GOVERSION.$GOARCH.tar.gz -C /usr/local/go --strip-components=1
-		rm /tmp/go$GOVERSION.$GOARCH.tar.gz
+		wget https://dl.google.com/cloudsql/cloud_sql_proxy.linux.amd64 -O $VENDOR_DIR/cloud_sql_proxy
+		ln -s $VENDOR_DIR/cloud_sql_proxy $BIN_DIR/cloud_sql_proxy
 
 		# enable thinkpad battery features and temperature monitoring:
 		sudo apt install tlp powerstat acpi-call-dkms psensor # acpi-call may no longer be needed in future kernel versions
 
 		# install vim addons using vim 8's built-in package management and create symlinks in ~/.vim for easy upgrade management
 		echo "Installing vim addons."
-		sudo git clone https://github.com/morhetz/gruvbox /usr/local/src/gruvbox
-		sudo git clone https://github.com/vim-airline/vim-airline /usr/local/src/vim-airline
-		sudo git clone https://github.com/tpope/vim-fugitive /usr/local/src/vim-fugitive
+		git clone https://github.com/morhetz/gruvbox $VENDOR_DIR/gruvbox
+		git clone https://github.com/vim-airline/vim-airline $VENDOR_DIR/vim-airline
+		git clone https://github.com/tpope/vim-fugitive $VENDOR_DIR/vim-fugitive
 		mkdir -p $HOME/.vim/pack/addons/{start,opt}/
-		ln -s /usr/local/src/gruvbox $HOME/.vim/pack/addons/start/gruvbox
-		ln -s /usr/local/src/vim-airline $HOME/.vim/pack/addons/start/vim-airline
-		ln -s /usr/local/src/vim-fugitive $HOME/.vim/pack/addons/start/vim-fugitive
+		ln -s $VENDOR_DIR/gruvbox $HOME/.vim/pack/addons/start/gruvbox
+		ln -s $VENDOR_DIR/vim-airline $HOME/.vim/pack/addons/start/vim-airline
+		ln -s $VENDOR_DIR/vim-fugitive $HOME/.vim/pack/addons/start/vim-fugitive
 
 		# install fonts patched with powerline symbols (required for terminal themes and vim/tmux addons)
 		echo "Installing powerline fonts."
 		git clone https://github.com/powerline/fonts /tmp/powerline-fonts
-		# change powerline's install script to install globally
-		sed -i 's/$HOME\/.local/\/usr\/local/g' /tmp/powerline-fonts/install.sh
-		sudo /tmp/powerline-fonts/install.sh
+		bash /tmp/powerline-fonts/install.sh
 		rm -rf /tmp/powerline-fonts
 
 		# install texpander and dependencies
 		echo "Installing Texpander. NOTE: Remember to add a keyboard shortcut."
 		sudo apt install -y xsel xdotool zenity
-		sudo git clone https://github.com/leehblue/texpander /usr/local/src/texpander
+		sudo git clone https://github.com/leehblue/texpander $VENDOR_DIR/texpander
+		ln -s $VENDOR_DIR/texpander/texpander.sh $BIN_DIR/texpander.sh
 		mkdir $HOME/.texpander
 
 		echo "Importing gnome terminal themes."

@@ -115,27 +115,17 @@ let g:netrw_winsize = 25
 " 6. language-specific
 """"""""
 
-" golang
-autocmd filetype go set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab
+" 4 space family
+autocmd filetype rs,php,py,md set tabstop=8 softtabstop=4 shiftwidth=4 expandtab
 
-" php
-autocmd filetype php set tabstop=8 softtabstop=4 shiftwidth=4 expandtab
+" 2 space family
+autocmd filetype js,ts,html,yaml set tabstop=8 softtabstop=2 shiftwidth=2 expandtab
 
-" typescript/javascript
-autocmd filetype js set tabstop=8 softtabstop=2 shiftwidth=2 expandtab
-autocmd filetype ts set tabstop=8 softtabstop=2 shiftwidth=2 expandtab
+" 4 col tab family
+autocmd filetype go,xml set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab
 
-" bash
+" classic tab family (for legacy compatibility)
 autocmd filetype sh set tabstop=8 softtabstop=8 shiftwidth=8 noexpandtab
-
-" python
-autocmd filetype py set tabstop=8 softtabstop=4 shiftwidth=4 expandtab
-autocmd filetype py let python_highlight_all = 1
-autocmd filetype py textwidth=79
-
-" html/xml
-autocmd filetype html set tabstop=8 softtabstop=2 shiftwidth=2 expandtab
-autocmd filetype xml set tabstop=8 softtabstop=2 shiftwidth=2 expandtab
 
 """"""""
 " 7. addons
@@ -146,4 +136,3 @@ let g:airline_powerline_fonts = 1
 let g:airline_theme = 'gruvbox'
 set laststatus=2
 set noshowmode
-
