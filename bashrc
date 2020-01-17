@@ -61,13 +61,12 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# ls aliases
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
-
-# aliases
-alias tree='exa -T'
+# alias ls to use exa
+alias ls='exa'
+alias ll='exa -alF'
+alias la='exa -a'
+alias l='exa -F'
+alias t='exa -T'
 
 # Custom 256 color palette for gruvbox
 source "/usr/local/src/gruvbox/gruvbox_256palette.sh"
