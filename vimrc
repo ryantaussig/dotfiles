@@ -7,9 +7,8 @@
 "   2. user interface settings
 "   3. custom keybindings
 "   4. colors and fonts
-"   5. netrw tweaks
-"   6. language-specific
-"   7. addons
+"   5. tab-settings
+"   6. addons
 """"""""
 
 """"""""
@@ -33,6 +32,14 @@ filetype plugin indent on
 
 " no visual or audible bell
 set noerrorbells visualbell t_vb=
+
+" use a single directory for Vim's temporary files
+" The `//` notation prevents filename conflicts by expanding to the full path
+" of the swapfile's parent with `%` substituted for `/`. Vim will try to write
+" these to `$HOME/tmp` and will fallback to `/var/tmp` if it doesn't exist.
+set directory=~/tmp//,/var/tmp//
+set undodir=~/tmp//,/var/tmp//
+set backupdir=~/tmp//,/var/tmp//
 
 """"""""
 " 2. user interface settings
@@ -78,7 +85,7 @@ let mapleader="\<space>"
 " toggle search highlighting on an off with space-h
 nnoremap <leader>h :call gruvbox#hls_toggle()<CR>
 
-"toggle list characters
+" toggle list characters
 nnoremap <leader>l :set invlist<CR>
 
 """"""""
@@ -93,42 +100,23 @@ colorscheme gruvbox
 set background=dark
 
 """"""""
-" 5. netrw tweaks
-""""""""
-
-" no banner
-let g:netrw_banner = 0
-
-" tree-style listing
-let g:netrw_liststyle = 3
-
-" open files in previous window not netrw window (3 for new tab)
-let g:netrw_browse_split = 4
-
-" open in vertical split
-let g:netrw_altv = 1
-
-" set split width
-let g:netrw_winsize = 25
-
-""""""""
-" 6. language-specific
+" 5. tab-settings
 """"""""
 
 " 4 space family
 autocmd filetype rs,php,py,md set tabstop=8 softtabstop=4 shiftwidth=4 expandtab
 
 " 2 space family
-autocmd filetype js,ts,html,yaml set tabstop=8 softtabstop=2 shiftwidth=2 expandtab
+autocmd filetype js,ts,html,yaml,xml set tabstop=8 softtabstop=2 shiftwidth=2 expandtab
 
 " 4 col tab family
-autocmd filetype go,xml set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab
+autocmd filetype go set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab
 
 " classic tab family (for legacy compatibility)
 autocmd filetype sh set tabstop=8 softtabstop=8 shiftwidth=8 noexpandtab
 
 """"""""
-" 7. addons
+" 6. addons
 """"""""
 
 " vim-airline: enable powerline fonts, use tomorrow theme for gruvbox compatibility, always show laststatus to enable airline, showmode not needed with airline

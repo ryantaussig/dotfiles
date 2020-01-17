@@ -71,17 +71,12 @@ while true; do
 		curl https://sh.rustup.rs -sSf | sh
 
 		# install general packages
-		sudo apt install -y gnome-terminal pandoc cmus ripit mpv youtube-dl vlc libreoffice gnome-tweaks vim-gtk3 pavucontrol snapd
+		sudo apt install -y gnome-terminal firefox pandoc cmus ripit mpv youtube-dl vlc libreoffice gnome-tweaks vim-gtk3 pavucontrol snapd
 
 		# install chat clients
 		sudo snap install discord
 		sudo snap install slack --classic
 		sudo snap install skype --classic
-
-		# install VA-API enabled chromium and drivers (enabled via chrome://flags)
-		# NOTE: currently won't work with some DRM sites like netflix---use firefox in those cases
-		sudo add-apt-repository ppa:saiarcot895/chromium-dev
-		sudo apt update && sudo apt install -y chromium-browser i965-va-driver
 
 		# install devops stuff
 		sudo apt install -y docker.io certbot openssl zstd php composer php-xml php-pear python3 python3-pip
@@ -95,6 +90,7 @@ while true; do
 		sudo snap install google-cloud-sdk --classic
 		sudo snap install kubectl --classic
 		sudo snap install aws-cli --classic
+		sudo snap install intellij-idea-community --classic
 		wget https://dl.google.com/cloudsql/cloud_sql_proxy.linux.amd64 -O $VENDOR_DIR/cloud_sql_proxy
 		ln -s $VENDOR_DIR/cloud_sql_proxy $BIN_DIR/cloud_sql_proxy
 
@@ -113,9 +109,9 @@ while true; do
 
 		# install fonts patched with powerline symbols (required for terminal themes and vim/tmux addons)
 		echo "Installing powerline fonts."
-		git clone https://github.com/powerline/fonts /tmp/powerline-fonts
-		bash /tmp/powerline-fonts/install.sh
-		rm -rf /tmp/powerline-fonts
+		git clone https://github.com/powerline/fonts $HOME/tmp/powerline-fonts
+		bash $HOME/tmp/powerline-fonts/install.sh
+		rm -rf $HOME/tmp/powerline-fonts
 
 		# install texpander and dependencies
 		echo "Installing Texpander. NOTE: Remember to add a keyboard shortcut."
@@ -140,9 +136,6 @@ echo SUCCESS
 ########
 # other (misc. applications, not currently needed, explore at a later date)
 ########
-
-## docs
-#pip3 install mkdocs mkdocs-material
 
 ## ham radio
 #sudo apt install -y chirp hamradio* ax25-applications ax25-applications ax25-xapplications ax25mail-utils gnuradio gnuradio-dev gnuradio-doc direwolf direwolf-docs
