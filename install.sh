@@ -48,7 +48,7 @@ while true; do
 	read -rp "Do you wish to install the headless/server applications? (y/n): " CLI
 	if [[ "$CLI" == "y" ]]; then
 		echo "Installing..."
-		sudo apt install -y vim-nox tmux git ssh exa lnav peco tig ranger ncdu htop curl wget w3m w3m-img iperf mycli
+		sudo apt install -y vim-nox tmux git ssh lnav peco tig ranger ncdu htop curl wget w3m w3m-img iperf mycli # exa not available on 19.10, install via cargo instead
 	elif [[ "$CLI" == "n" ]]; then
 		echo "Skipping..."
 	else
@@ -69,6 +69,7 @@ while true; do
 
 		# NOTE: rust installation is best managed using `rustup`, which will prompt the user for input during install, so let's do that first
 		curl https://sh.rustup.rs -sSf | sh
+		cargo install exa
 
 		# install general packages
 		sudo apt install -y gnome-terminal firefox pandoc cmus ripit mpv youtube-dl vlc libreoffice gnome-tweaks vim-gtk3 pavucontrol snapd
@@ -79,7 +80,7 @@ while true; do
 		sudo snap install skype --classic
 
 		# install devops stuff
-		sudo apt install -y docker.io certbot openssl zstd php composer php-xml php-pear python3 python3-pip
+		sudo apt install -y docker.io certbot openssl zstd php composer php-xml php-pear python3 python3-pip mysql-workbench
 		pip3 install phpserialize
 		pip3 install mysql-connector-python
 		pip3 install mkdocs
