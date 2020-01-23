@@ -35,11 +35,12 @@ set noerrorbells visualbell t_vb=
 
 " use a single directory for Vim's temporary files
 " The `//` notation prevents filename conflicts by expanding to the full path
-" of the swapfile's parent with `%` substituted for `/`. Vim will try to write
-" these to `$HOME/tmp` and will fallback to `/var/tmp` if it doesn't exist.
-set directory=~/tmp//,/var/tmp//
-set undodir=~/tmp//,/var/tmp//
-set backupdir=~/tmp//,/var/tmp//
+" of the swapfile's parent with `%` substituted for `/`. Use `/var/tmp` to
+" preserve swapfiles between reboots and prevent multiple copies in various
+" user home directories.
+set directory=/var/tmp//
+set undodir=/var/tmp//
+set backupdir=/var/tmp//
 
 """"""""
 " 2. user interface settings
