@@ -76,6 +76,9 @@ set hlsearch
 " fancy unicode list characters
 set listchars=tab:►\ ,trail:◊,eol:↵,extends:…,precedes:…,conceal:●,nbsp:␣
 
+" highlight column 80 for tracking line length
+set colorcolumn=80
+
 """"""""
 " 3. custom keybindings
 """"""""
@@ -108,7 +111,7 @@ set background=dark
 autocmd filetype rs,php,py,md set tabstop=8 softtabstop=4 shiftwidth=4 expandtab
 
 " 2 space family
-autocmd filetype js,ts,html,yaml,xml set tabstop=8 softtabstop=2 shiftwidth=2 expandtab
+autocmd filetype js,json,ts,html,yaml,xml set tabstop=8 softtabstop=2 shiftwidth=2 expandtab
 
 " 4 col tab family
 autocmd filetype go set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab

@@ -15,7 +15,10 @@ if [ -n "$BASH_VERSION" ]; then
 	fi
 fi
 
-# TMUX runs login shells creating duplicate entries in $PATH, so check if $TMUX is set first.
+# set $PYTHONUSERBASE to $HOME/.python in order to keep $HOME/.local clean
+PYTHONUSERBASE="$HOME/.python"
+
+# tmux runs login shells creating duplicate entries in $PATH, so check if $TMUX is set first.
 if [ -z "$TMUX" ]; then
 	# add user's private bin to $PATH if it exists
 	if [ -d "$HOME/.local/bin" ] ; then
@@ -30,6 +33,11 @@ if [ -z "$TMUX" ]; then
 	# add user's global composer bin to $PATH if it exists
 	if [ -d "$HOME/.config/composer/vendor/bin" ] ; then
 		PATH="$PATH:$HOME/.config/composer/vendor/bin"
+	fi
+
+	# add user's python/pip bin to $PATH if it exists
+	if [ -d "$HOME/.python/bin" ] ; then
+		PATH="$PATH:$HOME/.python/bin"
 	fi
 fi
 

@@ -70,6 +70,7 @@ while true; do
 		# NOTE: rust installation is best managed using `rustup`, which will prompt the user for input during install, so let's do that first
 		curl https://sh.rustup.rs -sSf | sh
 		cargo install exa
+		cargo install cargo-update # adds `cargo install-update` subcommand for updating bins (`cargo update` only does deps from Cargo.lock)
 
 		# install general packages
 		sudo apt install -y gnome-terminal firefox pandoc cmus ripit mpv youtube-dl vlc libreoffice gnome-tweaks vim-gtk3 pavucontrol snapd

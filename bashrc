@@ -28,8 +28,12 @@ shopt -s checkwinsize
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
-# set prompt
-PS1='\n\[\033[01;32m\]\u@\H \[\033[01;34m\]\w\n\[\033[01;00m\] '
+# set prompt, use red if root
+if [ "$(id -u)" == "0" ]; then
+	PS1='\n\[\033[01;31m\]\u@\H \[\033[01;34m\]\w\n\[\033[01;00m\] '
+else
+	PS1='\n\[\033[01;32m\]\u@\H \[\033[01;34m\]\w\n\[\033[01;00m\] '
+fi
 
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
@@ -61,12 +65,14 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# alias ls to use exa
-alias ls='exa'
-alias ll='exa -alF'
-alias la='exa -a'
-alias l='exa -F'
-alias t='exa -T'
+# alias ls to use exa if it's installed
+if [ -x "$(command -v exa)" ]; then
+	alias ls='exa'
+	alias ll='exa -alF'
+	alias la='exa -a'
+	alias l='exa -F'
+	alias t='exa -T'
+fi
 
 # Custom 256 color palette for gruvbox
 source "/usr/local/src/gruvbox/gruvbox_256palette.sh"
