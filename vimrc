@@ -108,10 +108,10 @@ set background=dark
 """"""""
 
 " 4 space family
-autocmd filetype rs,php,py,md set tabstop=8 softtabstop=4 shiftwidth=4 expandtab
+autocmd filetype rust,typescript,typescriptreact,php,python,markdown set tabstop=8 softtabstop=4 shiftwidth=4 expandtab
 
 " 2 space family
-autocmd filetype js,json,ts,html,yaml,xml set tabstop=8 softtabstop=2 shiftwidth=2 expandtab
+autocmd filetype javascript,javascriptreact,json,html,yaml,xml set tabstop=8 softtabstop=2 shiftwidth=2 expandtab
 
 " 4 col tab family
 autocmd filetype go set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab

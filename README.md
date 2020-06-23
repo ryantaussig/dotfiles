@@ -9,7 +9,7 @@ NOTE: The install script only applies gnome-terminal settings if the GUI options
 
 ## License
 
-Copyright 2015-2019 Ryan Taussig
+Copyright 2015-2020 Ryan Taussig
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.

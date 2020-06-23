@@ -30,9 +30,9 @@ shopt -s checkwinsize
 
 # set prompt, use red if root
 if [ "$(id -u)" == "0" ]; then
-	PS1='\n\[\033[01;31m\]\u@\H \[\033[01;34m\]\w\n\[\033[01;00m\] '
+	PS1='\n\[\033[01;31m\]\u@\H  \[\033[01;34m\]\w  \[\033[01;33m\]$(__git_ps1 " %s ") \[\033[01;00m\]\n# '
 else
-	PS1='\n\[\033[01;32m\]\u@\H \[\033[01;34m\]\w\n\[\033[01;00m\] '
+	PS1='\n\[\033[01;32m\]\u@\H  \[\033[01;34m\]\w  \[\033[01;33m\]$(__git_ps1 " %s ") \[\033[01;00m\]\n$ '
 fi
 
 # If this is an xterm set the title to user@host:dir
