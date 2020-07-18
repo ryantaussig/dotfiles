@@ -13,7 +13,7 @@ set -euo pipefail
 # install settings
 DOTFILES_DIR="$HOME/dotfiles"
 OLD_DIR="$HOME/tmp/dotfiles_old"
-BIN_DIR="$HOME/.local/bin"
+BIN_DIR="$HOME/bin"
 VENDOR_DIR="$HOME/vendor"
 DOTFILES="
 .vimrc
@@ -89,8 +89,8 @@ while true; do
 		sudo snap install chromium # for debugging purposes and occasional general use when a site doesn't agree with firefox
 		cargo install cargo-update # adds `cargo install-update` subcommand for updating bins (`cargo update` only does deps from Cargo.lock)
 		cargo install mdbook
-		cargo install deno # experiment with deno as a potential node replacement
-		# NOTE: `nodejs` versions are best managed using some sort of manager, such as `n`.
+		cargo install deno # for experimenting with command line scripts
+		# NOTE: `nodejs` versions are best managed using a tool, such as `n` or `nvm`. Use `n` since it is available directly via `npm`.
 		sudo npm install -g n
 		sudo n stable # update node to latest stable version
 		sudo npm install -g typescript
