@@ -1,10 +1,3 @@
-########
-# author: ryantaussig
-# license: MIT
-#
-# This bashrc is adapted from the debian/ubuntu default version.
-########
-
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;
@@ -75,5 +68,6 @@ if [ -x "$(command -v exa)" ]; then
 fi
 
 # Custom 256 color palette for gruvbox
-source "/usr/local/src/gruvbox/gruvbox_256palette.sh"
-
+. "/usr/local/src/gruvbox/gruvbox_256palette.sh"
+#. "$HOME/.env"
+#. "$VENDOR_DIR/gruvbox/gruvbox_256palette.sh"

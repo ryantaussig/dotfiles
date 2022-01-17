@@ -1,17 +1,4 @@
 """"""""
-" author: ryantaussig
-" license: MIT
-"
-" contents:
-"   1. general settings
-"   2. user interface settings
-"   3. custom keybindings
-"   4. colors and fonts
-"   5. tab-settings
-"   6. addons
-""""""""
-
-""""""""
 " 1. general settings
 """"""""
 
