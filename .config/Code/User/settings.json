@@ -21,5 +21,6 @@
   "redhat.telemetry.enabled": false,
   "editor.largeFileOptimizations": false,
   "explorer.confirmDelete": false,
-  "intelephense.diagnostics.undefinedTypes": false
+  "intelephense.diagnostics.undefinedTypes": false,
+  "telemetry.telemetryLevel": "off"
 }
