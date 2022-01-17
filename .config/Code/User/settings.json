@@ -1,0 +1,25 @@
+{
+  "workbench.colorTheme": "Gruvbox Material Dark",
+  "editor.fontFamily": "'DejaVu Sans Mono for Powerline'",
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[prisma]": {
+    "editor.defaultFormatter": "Prisma.prisma"
+  },
+  "[rust]": {
+    "editor.defaultFormatter": "rust-lang.rust"
+  },
+  "[svelte]": {
+    "editor.defaultFormatter": "svelte.svelte-vscode"
+  },
+  "git.autofetch": true,
+  "workbench.editor.enablePreview": false,
+  "workbench.startupEditor": "none",
+  "liveServer.settings.donotShowInfoMsg": true,
+  "extensions.ignoreRecommendations": true,
+  "emmet.showExpandedAbbreviation": "inMarkupAndStylesheetFilesOnly",
+  "redhat.telemetry.enabled": false,
+  "editor.largeFileOptimizations": false,
+  "explorer.confirmDelete": false,
+  "intelephense.diagnostics.undefinedTypes": false
+}
