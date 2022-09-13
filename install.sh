@@ -74,7 +74,7 @@ while true; do
     sudo apt install brave-browser
 
     # install general packages
-    sudo apt install -y gnome-terminal firefox pandoc cmus ripit mpv youtube-dl vlc libreoffice gnome-tweaks vim-gtk3 pavucontrol snapd mkusb cura
+    sudo apt install -y gnome-terminal pandoc cmus ripit mpv youtube-dl vlc libreoffice gnome-tweaks vim-gtk3 pavucontrol snapd mkusb cura openscad
     cargo install exa
     sudo snap install discord
     sudo snap install slack --classic
@@ -83,19 +83,15 @@ while true; do
     # allow 1password keyring access for 2fa tokens
     sudo snap connect 1password:password-manager-service :password-manager-service
     sudo snap install authy
-    sudo snap install simplenote
 
     # install development and operations tools
     sudo apt install -y docker.io certbot openssl zstd nodejs npm php composer php-xml php-pear python3 python3-pip mysql-workbench
     sudo snap install code --classic
     . $DOTFILES_DIR/scripts/install-code-extensions.sh
     sudo snap install arduino
-    sudo snap install google-cloud-sdk --classic
-    sudo snap install kubectl --classic
     sudo snap install aws-cli --classic
     cargo install cargo-update # adds `cargo install-update` subcommand for updating bins (`cargo update` only does deps from Cargo.lock)
     cargo install mdbook
-    cargo install deno # for experimenting with command line scripts
     # NOTE: `nodejs` versions are best managed using a tool, such as `n` or `nvm`. Use `n` since it is available directly via `npm`.
     sudo npm install -g n
     sudo n lts # update node to latest lts version
@@ -104,6 +100,12 @@ while true; do
     pip3 install phpserialize
     pip3 install mysql-connector-python
     composer global require symplify/easy-coding-standard --dev
+
+    # install google cloud tools
+    sudo curl -fsSLo /usr/share/keyrings/cloud.google.gpg https://packages.cloud.google.com/apt/doc/apt-key.gpg
+    echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main" | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
+    sudo apt update
+    sudo apt install google-cloud-cli kubectl
     wget https://dl.google.com/cloudsql/cloud_sql_proxy.linux.amd64 -O $VENDOR_DIR/cloud_sql_proxy
     ln -s $VENDOR_DIR/cloud_sql_proxy $BIN_DIR/cloud_sql_proxy
 

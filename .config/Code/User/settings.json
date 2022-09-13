@@ -22,5 +22,56 @@
   "editor.largeFileOptimizations": false,
   "explorer.confirmDelete": false,
   "intelephense.diagnostics.undefinedTypes": false,
-  "telemetry.telemetryLevel": "off"
+  "telemetry.telemetryLevel": "off",
+  "todo-tree.general.tags": ["BUG", "FIXME", "HACK", "TODO", "NOTE"],
+  // Colors used match the Gruvbox Material Dark (Medium) theme.
+  "todo-tree.highlights.defaultHighlight": {
+    "foreground": "#282828"
+  },
+  "todo-tree.highlights.customHighlight": {
+    // Confirmed bug reports with tracking integration of some form. Treat these as high priority `FIXME`s. They MUST be resolved before the next release and MAY prompt the release of an unscheduled patch.
+    "BUG": {
+      "icon": "bug",
+      "iconColour": "#ea6962",
+      "background": "#ea6962"
+    },
+    // Problematic, incomplete, or missing code that requires refactoring or debugging. These MUST be completed before the next release.
+    "FIXME": {
+      "icon": "circle-slash",
+      "iconColour": "#ea6962",
+      "background": "#ea6962"
+    },
+    // Temporary code used as a workaround to a known issue. These SHOULD eventually become `FIXME`s. These MUST contain information describing the problem the attached code addresses. Whenever possible, explanatory comments SHOULD contain suggested potential solutions that could render the hack unnecessary.
+    "HACK": {
+      "icon": "alert",
+      "iconColour": "#d8a657",
+      "background": "#d8a657"
+    },
+    // Tasks or features that are pending completion, under consideration, require documentation, or other tasks not critical to the next release. These MAY be addressed before the next release.
+    "TODO": {
+      // Renders as the desired "checkbox" icon instead of the actual "tasklist" icon.
+      "icon": "tasklist",
+      "iconColour": "#7daea3",
+      "background": "#7daea3"
+    },
+    // Information needed to contextualize the attached code, including unintuitive implementation details, potential caveats or gotchas, legal requirements, or any other information of critical importance to the developer.
+    "NOTE": {
+      "icon": "info",
+      "iconColour": "#a9b665",
+      "background": "#a9b665"
+    }
+  },
+  // See https://github.com/Gruntfuggly/todo-tree/pull/251
+  "todo-tree.regex.regex": "((//|#|(^|[ \\t]+)--|<!--|;|(/|^[ \\t]*)\\*+|^)[ \\t]*@?($TAGS)\\b|^[ \\t]*- \\[ \\])",
+  "eslint.options": {
+    "overrideConfigFile": "./.eslintrc.js"
+  },
+  "editor.tokenColorCustomizations": {
+    "textMateRules": []
+  },
+  "gitlens.defaultDateShortFormat": "YYYY-MM-DD",
+  "gitlens.defaultDateLocale": null,
+  "gitlens.defaultDateFormat": "YYYY-MM-DDTHH:MM",
+  "gitlens.defaultTimeFormat": "HH:MM",
+  "gitlens.defaultDateStyle": "absolute"
 }

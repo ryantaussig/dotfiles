@@ -71,3 +71,6 @@ fi
 . "/usr/local/src/gruvbox/gruvbox_256palette.sh"
 #. "$HOME/.env"
 #. "$VENDOR_DIR/gruvbox/gruvbox_256palette.sh"
+
+# Use GKE GCloud auth plugin (for work)
+export USE_GKE_GCLOUD_AUTH_PLUGIN=True
