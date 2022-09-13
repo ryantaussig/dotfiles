@@ -45,7 +45,7 @@ while true; do
   read -rp "Do you wish to install the headless/server applications? (y/n): " CLI
   if [[ "$CLI" == "y" ]]; then
     echo "Installing..."
-    sudo apt install -y vim-nox tmux git ssh lnav peco tig ranger ncdu htop curl wget w3m w3m-img iperf mycli
+    sudo apt install -y vim-nox tmux git gh ssh lnav peco tig ranger ncdu htop curl wget w3m w3m-img iperf mycli
   elif [[ "$CLI" == "n" ]]; then
     echo "Skipping..."
   else
