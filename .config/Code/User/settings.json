@@ -66,12 +66,20 @@
   "eslint.options": {
     "overrideConfigFile": "./.eslintrc.js"
   },
-  "editor.tokenColorCustomizations": {
-    "textMateRules": []
-  },
   "gitlens.defaultDateShortFormat": "YYYY-MM-DD",
   "gitlens.defaultDateLocale": null,
   "gitlens.defaultDateFormat": "YYYY-MM-DDTHH:MM",
   "gitlens.defaultTimeFormat": "HH:MM",
-  "gitlens.defaultDateStyle": "absolute"
+  "gitlens.defaultDateStyle": "absolute",
+  "editor.tokenColorCustomizations": {
+    "textMateRules": [
+      {
+        "name": "envKeys",
+        "scope": "string.quoted.single.ini,constant.numeric.ini,string.quoted.double.ini",
+        "settings": {
+          "foreground": "#19354900"
+        }
+      }
+    ]
+  }
 }

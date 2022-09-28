@@ -77,8 +77,8 @@ while true; do
     sudo apt install -y gnome-terminal pandoc cmus ripit mpv youtube-dl vlc libreoffice gnome-tweaks vim-gtk3 pavucontrol snapd mkusb cura openscad
     cargo install exa
     sudo snap install discord
-    sudo snap install slack --classic
-    sudo snap install skype --classic
+    sudo snap install slack
+    sudo snap install skype
     sudo snap install 1password
     # allow 1password keyring access for 2fa tokens
     sudo snap connect 1password:password-manager-service :password-manager-service
